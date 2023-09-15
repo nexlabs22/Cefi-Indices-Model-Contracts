@@ -3,7 +3,7 @@ pragma solidity 0.8.7;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title ProposableOwnable
-/// @author Alongside Finance
+/// @author NEX Labs
 /// @notice OpenZeppelin's Ownable with propose/accept
 abstract contract ProposableOwnable is Ownable {
     address public proposedOwner;

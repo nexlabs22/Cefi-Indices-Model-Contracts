@@ -6,9 +6,9 @@ import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import "./TokenInterface.sol";
 
-/// @title AMKT Token
-/// @author Alongside Finance
-/// @notice The main token contract for AMKT (Alongside Finance)
+/// @title Index Token
+/// @author NEX Labs Protocol
+/// @notice The main token contract for Index Token (NEX Labs Protocol)
 /// @dev This contract uses an upgradeable pattern
 contract IndexToken is
     ContextUpgradeable,
@@ -17,10 +17,7 @@ contract IndexToken is
     PausableUpgradeable,
     TokenInterface
 {
-    ///=============================================================================================
-    /// Alongside
-    ///=============================================================================================
-
+    
     uint256 internal constant SCALAR = 1e20;
 
     // Inflation rate (per day) on total supply, to be accrued to the feeReceiver.
@@ -42,12 +39,9 @@ contract IndexToken is
 
     uint256 public supplyCeiling;
 
-    mapping(address => bool) isRestricted;
+    mapping(address => bool) public isRestricted;
 
-    ///=============================================================================================
-    /// Modifiers
-    ///=============================================================================================
-
+    
     modifier onlyMethodologist() {
         require(msg.sender == methodologist, "IndexToken: caller is not the methodologist");
         _;
@@ -58,10 +52,7 @@ contract IndexToken is
         _;
     }
 
-    ///=============================================================================================
-    /// Initializer
-    ///=============================================================================================
-
+    
     function initialize(
         string memory tokenName,
         string memory tokenSymbol,
@@ -82,17 +73,15 @@ contract IndexToken is
         feeTimestamp = block.timestamp;
     }
 
-    ///=============================================================================================
-    /// Mint Logic
-    ///=============================================================================================
-
+    
     /// @notice External mint function
     /// @dev Mint function can only be called externally by the controller
     /// @param to address
     /// @param amount uint256
     function mint(address to, uint256 amount) external override whenNotPaused onlyMinter {
         require(totalSupply() + amount <= supplyCeiling, "will exceed supply ceiling");
-        require(!isRestricted[to] && !isRestricted[msg.sender]);
+        require(!isRestricted[to], "to is restricted");
+        require(!isRestricted[msg.sender], "msg.sender is restricted");
         _mintToFeeReceiver();
         _mint(to, amount);
     }
@@ -102,7 +91,8 @@ contract IndexToken is
     /// @param from address
     /// @param amount uint256
     function burn(address from, uint256 amount) external override whenNotPaused onlyMinter {
-        require(!isRestricted[from] && !isRestricted[msg.sender]);
+        require(!isRestricted[from], "from is restricted");
+        require(!isRestricted[msg.sender], "msg.sender is restricted");
         _mintToFeeReceiver();
         _burn(from, amount);
     }
@@ -137,10 +127,7 @@ contract IndexToken is
         _mintToFeeReceiver();
     }
 
-    ///=============================================================================================
-    /// Setters
-    ///=============================================================================================
-
+    
     /// @notice Only owner function for setting the methodologist
     /// @param _methodologist address
     function setMethodologist(address _methodologist) external override onlyOwner {
@@ -188,10 +175,7 @@ contract IndexToken is
         emit SupplyCeilingSet(_supplyCeiling);
     }
 
-    ///=============================================================================================
-    /// Pausable Logic
-    ///=============================================================================================
-
+    
     function pause() external override onlyOwner {
         _pause();
     }
@@ -200,10 +184,7 @@ contract IndexToken is
         _unpause();
     }
 
-    ///=============================================================================================
-    /// Restrict
-    ///=============================================================================================
-
+    
     /// @notice Compliance feature to blacklist bad actors
     /// @dev Negates current restriction state
     /// @param who address
@@ -212,16 +193,14 @@ contract IndexToken is
         emit ToggledRestricted(who, isRestricted[who]);
     }
 
-    ///=============================================================================================
-    /// Overrides
-    ///=============================================================================================
-
+    
     /// @notice Overriden ERC20 transfer to include restriction
     /// @param to address
     /// @param amount uint256
     /// @return bool
     function transfer(address to, uint256 amount) public override whenNotPaused returns (bool) {
-        require(!isRestricted[msg.sender] && !isRestricted[to]);
+        require(!isRestricted[msg.sender], "msg.sender is restricted");
+        require(!isRestricted[to], "to is restricted");
 
         _transfer(msg.sender, to, amount);
         return true;
@@ -237,7 +216,9 @@ contract IndexToken is
         address to,
         uint256 amount
     ) public override whenNotPaused returns (bool) {
-        require(!isRestricted[msg.sender] && !isRestricted[to] && !isRestricted[from]);
+        require(!isRestricted[msg.sender], "msg.sender is restricted");
+        require(!isRestricted[to], "to is restricted");
+        require(!isRestricted[from], "from is restricted");
 
         _spendAllowance(from, msg.sender, amount);
         _transfer(from, to, amount);
