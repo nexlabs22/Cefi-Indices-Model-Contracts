@@ -19,4 +19,6 @@ interface ControllerInterface {
     function isMerchant(address addr) external view returns (bool);
 
     function getToken() external view returns (address);
+
+    function getCustodianWallet() external view returns (address);
 }

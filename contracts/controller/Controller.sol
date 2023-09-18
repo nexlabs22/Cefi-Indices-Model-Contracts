@@ -105,6 +105,10 @@ contract Controller is ControllerInterface, ProposableOwnableUpgradeable {
         return address(token);
     }
 
+    function getCustodianWallet() external view override returns (address) {
+        return members.getCustodianWallet();
+    }
+
     
     function renounceOwnership() public view override onlyOwner {
         revert("renouncing ownership is blocked.");

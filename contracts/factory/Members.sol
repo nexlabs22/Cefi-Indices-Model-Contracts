@@ -15,6 +15,8 @@ contract Members is MembersInterface, ProposableOwnable {
 
     address public issuer;
 
+    address public custodianWallet;
+
     IndexedMapping.Data internal merchants;
 
     
@@ -24,7 +26,14 @@ contract Members is MembersInterface, ProposableOwnable {
         transferOwnership(newOwner);
     }
 
-    
+    function setCustodianWallet(address _custodianWallet) external onlyOwner returns (bool) {
+        require(_custodianWallet != address(0), "invalid custodian wallet address");
+        custodianWallet = _custodianWallet;
+
+        emit CustodianSet(_custodianWallet);
+        return true;
+    }
+
     /// @notice Allows the owner of the contract to set the issuer
     /// @param _issuer address
     /// @return bool
@@ -58,7 +67,10 @@ contract Members is MembersInterface, ProposableOwnable {
         return true;
     }
 
-    
+    function isCustodian(address addr) external view override returns (bool) {
+        return (addr == custodianWallet);
+    }
+
     function isIssuer(address addr) external view override returns (bool) {
         return (addr == issuer);
     }
@@ -73,6 +85,10 @@ contract Members is MembersInterface, ProposableOwnable {
 
     function getMerchants() external view override returns (address[] memory) {
         return merchants.getValueList();
+    }
+
+    function getCustodianWallet() external view override returns (address) {
+        return custodianWallet;
     }
 
     function merchantsLength() external view override returns (uint256) {
