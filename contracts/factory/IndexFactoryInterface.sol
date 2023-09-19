@@ -80,22 +80,14 @@ interface IndexFactoryInterface {
 
     function unpause() external;
 
-    function setIssuerDepositAddress(address merchant, address depositAddress) external returns (bool);
-
-    function setMerchantDepositAddress(address depositAddress) external returns (bool);
-
-    function setMerchantMintLimit(address merchant, uint256 amount) external returns (bool);
-
-    function setMerchantBurnLimit(address merchant, uint256 amount) external returns (bool);
 
     function addMintRequest(
-        uint256 amount,
-        address depositAddress
-    ) external returns (uint256);
+        uint256 amount
+    ) external returns (uint256, bytes32);
 
     function cancelMintRequest(bytes32 requestHash) external returns (bool);
 
-    function confirmMintRequest(bytes32 requestHash) external returns (bool);
+    function confirmMintRequest(bytes32 requestHash, uint _tokenAmount) external returns (bool);
 
     function rejectMintRequest(bytes32 requestHash) external returns (bool);
 

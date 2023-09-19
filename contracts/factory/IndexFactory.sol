@@ -18,19 +18,7 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
     address public usdc;
     uint8 public usdcDecimals;
 
-
-    // mapping between merchant to its per-mint limit.
-    mapping(address => uint256) public merchantMintLimit;
-
-    // mapping between merchant to its per-burn limit.
-    mapping(address => uint256) public merchantBurnLimit;
-
-    // mapping between merchant to the corresponding issuer deposit address, used in the minting process.
-    // by using a different deposit address per merchant the issuer can identify which merchant deposited.
-    mapping(address => address) public issuerDepositAddress;
-
-    // mapping between merchant to the its deposit address where the asset should be moved to, used in the burning process.
-    mapping(address => address) merchantDepositAddress;
+    
 
     // mapping between a mint request hash and the corresponding request nonce.
     mapping(bytes32 => uint256) public mintRequestNonce;
@@ -72,67 +60,25 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
         return true;
     }
     
-    /// @notice sets the address for the merchant to deposit thier assets
-    /// @param merchant address
-    /// @param depositAddress address
-    /// @return bool
-    function setIssuerDepositAddress(address merchant, address depositAddress)
-        external
-        override
-        onlyIssuer
-        returns (bool)
-    {
-        require(merchant != address(0), "invalid merchant address");
-        require(controller.isMerchant(merchant), "merchant address is not a real merchant.");
-        // require(!isEmptyString(depositAddress), "invalid asset deposit address");
+    
 
-        issuerDepositAddress[merchant] = depositAddress;
-        emit IssuerDepositAddressSet(merchant, msg.sender, depositAddress);
-        return true;
+    function getAllMintRequests() public view returns(Request[] memory){
+        return mintRequests;
     }
 
-    /// @notice Allows a merchant to relay what address they receive assets to
-    /// @param depositAddress string
-    /// @return bool
-    function setMerchantDepositAddress(address depositAddress) external override onlyMerchant returns (bool) {
-        // require(!isEmptyString(depositAddress), "invalid asset deposit address");
-
-        merchantDepositAddress[msg.sender] = depositAddress;
-        emit MerchantDepositAddressSet(msg.sender, depositAddress);
-        return true;
-    }
-
-    /// @notice Sets the maximum mint limit allowed per merchant
-    /// @param merchant address
-    /// @param amount uint256
-    /// @return bool
-    function setMerchantMintLimit(address merchant, uint256 amount) external override onlyIssuer returns (bool) {
-        merchantMintLimit[merchant] = amount;
-        return true;
-    }
-
-    /// @notice Sets the maximum burn limit allowed per merchant
-    /// @param merchant address
-    /// @param amount uint256
-    /// @return bool
-    function setMerchantBurnLimit(address merchant, uint256 amount) external override onlyIssuer returns (bool) {
-        merchantBurnLimit[merchant] = amount;
-        return true;
+    function getAllBurnRequests() public view returns(Request[] memory){
+        return burnRequests;
     }
 
     
-    /// @notice Allows a merchant to initiate a mint request
+    /// @notice Allows a user to initiate a mint request
     /// @param amount uint256
-    /// @param depositAddress address
     /// @return bool
     function addMintRequest(
-        uint256 amount,
-        address depositAddress
-    ) external override onlyMerchant whenNotPaused returns (uint256) {
-        // require(!isEmptyString(depositAddress), "invalid asset deposit address");
-        // require(compareStrings(depositAddress, issuerDepositAddress[msg.sender]), "wrong asset deposit address");
-        require(amount <= merchantMintLimit[msg.sender], "exceeds mint limit");
-
+        uint256 amount
+    ) external override whenNotPaused returns (uint256, bytes32) {
+        
+        //transfer usdc to custodian wallet
         address custodianWallet = controller.getCustodianWallet();
         SafeERC20.safeTransferFrom(IERC20(usdc), msg.sender, custodianWallet, amount);
 
@@ -142,7 +88,7 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
         Request memory request = Request({
             requester: msg.sender,
             amount: amount,
-            depositAddress: depositAddress,
+            depositAddress: custodianWallet,
             nonce: nonce,
             timestamp: timestamp,
             status: RequestStatus.PENDING
@@ -152,8 +98,8 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
         mintRequestNonce[requestHash] = nonce;
         mintRequests.push(request);
 
-        emit MintRequestAdd(nonce, msg.sender, amount, depositAddress, timestamp, requestHash);
-        return nonce;
+        emit MintRequestAdd(nonce, msg.sender, amount, custodianWallet, timestamp, requestHash);
+        return (nonce, requestHash);
     }
 
     /// @notice Allows a merchant to cancel a mint request
@@ -172,26 +118,24 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
         return true;
     }
 
-    
+    address public rr;
     /// @notice Allows a issuer to confirm a mint request
     /// @param requestHash bytes32
     /// @return bool
-    function confirmMintRequest(bytes32 requestHash) external override onlyIssuer returns (bool) {
+    function confirmMintRequest(bytes32 requestHash, uint _tokenAmount) external override onlyIssuer returns (bool) {
         uint256 nonce;
         Request memory request;
 
         (nonce, request) = getPendingMintRequest(requestHash);
-
+        rr = request.requester;
         mintRequests[nonce].status = RequestStatus.APPROVED;
-        require(controller.mint(request.requester, request.amount), "mint failed");
+        require(controller.mint(request.requester, _tokenAmount), "mint failed");
 
-        require(merchantMintLimit[request.requester] >= request.amount, "exceeds merchant limits");
-        merchantMintLimit[request.requester] -= request.amount;
 
         emit MintConfirmed(
             request.nonce,
             request.requester,
-            request.amount,
+            _tokenAmount,
             request.depositAddress,
             request.timestamp,
             requestHash
@@ -225,18 +169,15 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
     /// @notice Allows a merchant to initiate a burn request
     /// @param amount uint256
     /// @return bool
-    function burn(uint256 amount) external override onlyMerchant whenNotPaused returns (bool) {
-        require(amount <= merchantBurnLimit[msg.sender], "exceeds burn limit");
-        address depositAddress = merchantDepositAddress[msg.sender];
-        // require(!isEmptyString(depositAddress), "merchant asset deposit address was not set");
-
+    function burn(uint256 amount) external override whenNotPaused returns (bool) {
+        address custodianWallet = controller.getCustodianWallet();
         uint256 nonce = burnRequests.length;
         uint256 timestamp = getTimestamp();
 
         Request memory request = Request({
             requester: msg.sender,
             amount: amount,
-            depositAddress: depositAddress,
+            depositAddress: msg.sender,
             nonce: nonce,
             timestamp: timestamp,
             status: RequestStatus.PENDING
@@ -248,7 +189,7 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
 
         require(controller.burn(msg.sender, amount), "burn failed");
 
-        emit Burned(nonce, msg.sender, amount, depositAddress, timestamp, requestHash);
+        emit Burned(nonce, msg.sender, amount, custodianWallet, timestamp, requestHash);
         return true;
     }
 
@@ -263,9 +204,6 @@ contract IndexFactory is IndexFactoryInterface, OwnableUpgradeable, PausableUpgr
         (nonce, request) = getPendingBurnRequest(requestHash);
 
         burnRequests[nonce].status = RequestStatus.APPROVED;
-
-        require(merchantBurnLimit[request.requester] >= request.amount, "exceeds merchant limits");
-        merchantBurnLimit[request.requester] -= request.amount;
 
         emit BurnConfirmed(
             request.nonce,
