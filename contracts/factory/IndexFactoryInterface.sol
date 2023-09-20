@@ -2,7 +2,14 @@
 pragma solidity 0.8.7;
 
 interface IndexFactoryInterface {
+
+    event IssuerSet(address indexed issuer);
+
+    event CustodianSet(address indexed custodian);
+
     event UsdcAddressSet(address indexed usdc, uint8 indexed decimals, uint time);
+
+    event TokenAddressSet(address indexed token, uint time);
 
     event IssuerDepositAddressSet(address indexed merchant, address indexed sender, address depositAddress);
 
@@ -80,7 +87,7 @@ interface IndexFactoryInterface {
 
     function unpause() external;
 
-
+    
     function addMintRequest(
         uint256 amount
     ) external returns (uint256, bytes32);
@@ -91,7 +98,7 @@ interface IndexFactoryInterface {
 
     function rejectMintRequest(bytes32 requestHash) external returns (bool);
 
-    function burn(uint256 amount) external returns (bool);
+    function burn(uint256 amount) external returns (uint256, bytes32);
 
     function confirmBurnRequest(bytes32 requestHash) external returns (bool);
 
@@ -124,4 +131,10 @@ interface IndexFactoryInterface {
             string memory status,
             bytes32 requestHash
         );
+
+    function setTokenAddress(address _token) external returns (bool);
+    function setUsdcAddress(address _usdc, uint8 _usdcDecimals) external returns (bool);
+    function setCustodianWallet(address _custodianWallet) external returns (bool);
+    function setIssuer(address _issuer) external returns (bool);
+
 }

@@ -5,8 +5,6 @@ import "forge-std/Test.sol";
 import "../../contracts/test/Token.sol";
 import "../../contracts/token/IndexToken.sol";
 import "../../contracts/factory/IndexFactory.sol";
-import "../../contracts/controller/Controller.sol";
-import "../../contracts/factory/Members.sol";
 
 contract CounterTest is Test {
 
@@ -32,8 +30,6 @@ contract CounterTest is Test {
 
     Token public usdc;
     IndexToken public indexToken;
-    Controller public controller;
-    Members public members;
     IndexFactory public factory;
 
     address deployer = vm.addr(1);
@@ -53,9 +49,6 @@ contract CounterTest is Test {
         usdc = new Token(
             1000000e6
         );
-        members = new Members(
-            address(this)
-        );
         indexToken = new IndexToken();
         indexToken.initialize(
             "Anti Inflation",
@@ -64,36 +57,25 @@ contract CounterTest is Test {
             feeReceiver,
             1000000e18
         );
-        controller = new Controller();
-        controller.initialize(
-            address(indexToken)
-        );
         factory = new IndexFactory();
         factory.initialize(
-            address(controller),
+            custodianWallet,
+            issuer,
+            address(indexToken),
             address(usdc),
             6
         );
         
 
-        members.setCustodianWallet(custodianWallet);
-        members.setIssuer(issuer);
-        members.addMerchant(merchant);
-        controller.setMembers(address(members));
-        indexToken.setMinter(address(controller));
-        controller.setFactory(address(factory));
+        indexToken.setMinter(address(factory));
     }
 
     function testInitialized() public {
-        assertEq(address(factory.controller()), address(controller));
-        assertEq(factory.owner(), address(controller));
+        assertEq(factory.owner(), address(this));
         assertEq(address(factory.usdc()), address(usdc));
         assertEq(factory.usdcDecimals(), 6);
-        assertEq(address(controller.factory()), address(factory));
-        assertEq(members.custodianWallet(), custodianWallet);
-        assertEq(controller.getCustodianWallet(), custodianWallet);
-        assertEq(members.issuer(), issuer);
-        assertEq(members.isMerchant(merchant), true);
+        assertEq(factory.custodianWallet(), custodianWallet);
+        assertEq(factory.issuer(), issuer);
     }
 
 
@@ -120,6 +102,42 @@ contract CounterTest is Test {
         factory.confirmMintRequest(requestHash, 10e18);
         //check results
         assertEq(indexToken.balanceOf(add1), 10e18);        
+    }
+
+
+    function testBurnTokens() public {
+        IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests.length, 0);
+        usdc.transfer(add1, 1000e6);
+        vm.startPrank(add1);
+        usdc.approve(address(factory), 1000e6);
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
+        //check results
+        mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests[0].requester, add1);
+        assertEq(mintRequests[0].amount, 1000e6);
+        assertEq(mintRequests[0].depositAddress, custodianWallet);
+        assertEq(mintRequests[0].nonce, 0);
+        assertEq(mintRequests[0].timestamp, block.timestamp);
+        assertEq(mintRequests.length, 1);
+        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
+        assertEq(factory.mintRequestNonce(requestHash), nonce);
+        vm.stopPrank();
+        //conform mint request
+        vm.startPrank(issuer);
+        factory.confirmMintRequest(requestHash, 10e18);
+        //check results
+        assertEq(indexToken.balanceOf(add1), 10e18);
+        vm.stopPrank();
+
+        //add burn request
+        vm.startPrank(add1);
+        (uint burnNonce, bytes32 burnRequestHash) = factory.burn(10e18);
+        assertEq(indexToken.balanceOf(add1), 0);
+        vm.stopPrank();
+        //conform mint request
+        vm.startPrank(issuer);
+        factory.confirmBurnRequest(burnRequestHash);
     }
 
     
