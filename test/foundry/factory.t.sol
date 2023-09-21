@@ -5,6 +5,7 @@ import "forge-std/Test.sol";
 import "../../contracts/test/Token.sol";
 import "../../contracts/token/IndexToken.sol";
 import "../../contracts/factory/IndexFactory.sol";
+import "../../contracts/factory/IndexFactoryInterface.sol";
 
 contract CounterTest is Test {
 
@@ -28,29 +29,105 @@ contract CounterTest is Test {
         REJECTED
     }
 
+    event IssuerSet(address indexed issuer);
+
+    event CustodianSet(address indexed custodian);
+
+    event UsdcAddressSet(address indexed usdc, uint8 indexed decimals, uint time);
+
+    event TokenAddressSet(address indexed token, uint time);
+
+    event IssuerDepositAddressSet(address indexed merchant, address indexed sender, address depositAddress);
+
+    event MerchantDepositAddressSet(address indexed merchant, address depositAddress);
+
+    event MintRequestAdd(
+        uint256 indexed nonce,
+        address indexed requester,
+        uint256 amount,
+        address depositAddress,
+        uint256 timestamp,
+        bytes32 requestHash
+    );
+
+    event MintRequestCancel(uint256 indexed nonce, address indexed requester, bytes32 requestHash);
+
+    event MintConfirmed(
+        uint256 indexed nonce,
+        address indexed requester,
+        uint256 amount,
+        address depositAddress,
+        uint256 timestamp,
+        bytes32 requestHash
+    );
+
+    event MintRejected(
+        uint256 indexed nonce,
+        address indexed requester,
+        uint256 amount,
+        address depositAddress,
+        uint256 timestamp,
+        bytes32 requestHash
+    );
+
+    event Burned(
+        uint256 indexed nonce,
+        address indexed requester,
+        uint256 amount,
+        address depositAddress,
+        uint256 timestamp,
+        bytes32 requestHash
+    );
+
+    event BurnConfirmed(
+        uint256 indexed nonce,
+        address indexed requester,
+        uint256 amount,
+        address depositAddress,
+        uint256 timestamp,
+        bytes32 inputRequestHash
+    );
+
     Token public usdc;
+    Token public newUsdc;
     IndexToken public indexToken;
+    IndexToken public newIndexToken;
     IndexFactory public factory;
+    IndexFactory public newFactory;
 
     address deployer = vm.addr(1);
     address custodianWallet = vm.addr(2);
-    address issuer = vm.addr(3);
-    address merchant = vm.addr(4);
-    address feeReceiver = vm.addr(5);
-    address minter = vm.addr(6);
+    address newCustodianWallet = vm.addr(3);
+    address issuer = vm.addr(4);
+    address newIssuer = vm.addr(5);
+    address merchant = vm.addr(6);
+    address newMerchant = vm.addr(7);
+    address feeReceiver = vm.addr(8);
+    address minter = vm.addr(9);
 
-    address add1 = vm.addr(7);
-    address add2 = vm.addr(8);
-    address add3 = vm.addr(9);
-    address add4 = vm.addr(10);
+    address add1 = vm.addr(10);
+    address add2 = vm.addr(11);
+    address add3 = vm.addr(12);
+    address add4 = vm.addr(13);
 
 
     function setUp() public {
         usdc = new Token(
             1000000e6
         );
+        newUsdc = new Token(
+            1000000e6
+        );
         indexToken = new IndexToken();
         indexToken.initialize(
+            "Anti Inflation",
+            "ANFI",
+            1e18,
+            feeReceiver,
+            1000000e18
+        );
+        newIndexToken = new IndexToken();
+        newIndexToken.initialize(
             "Anti Inflation",
             "ANFI",
             1e18,
@@ -65,6 +142,14 @@ contract CounterTest is Test {
             address(usdc),
             6
         );
+        newFactory = new IndexFactory();
+        newFactory.initialize(
+            custodianWallet,
+            issuer,
+            address(indexToken),
+            address(usdc),
+            6
+        );
         
 
         indexToken.setMinter(address(factory));
@@ -72,11 +157,72 @@ contract CounterTest is Test {
 
     function testInitialized() public {
         assertEq(factory.owner(), address(this));
-        assertEq(address(factory.usdc()), address(usdc));
-        assertEq(factory.usdcDecimals(), 6);
+        assertEq(address(factory.token()), address(indexToken));
         assertEq(factory.custodianWallet(), custodianWallet);
         assertEq(factory.issuer(), issuer);
+        assertEq(address(factory.usdc()), address(usdc));
+        assertEq(factory.usdcDecimals(), 6);
     }
+
+
+    function testSetUsdcAddress() public {
+        assertEq(factory.usdc(), address(usdc));
+        //expect revert for address zero
+        vm.expectRevert("invalid token address");
+        factory.setUsdcAddress(address(0), 18);
+        //expect works with non zero address
+        // check event
+        vm.expectEmit(true, true, true, true);
+        emit UsdcAddressSet(address(newUsdc), 18, block.timestamp);
+        //set data
+        factory.setUsdcAddress(address(newUsdc), 18);
+        assertEq(factory.usdc(), address(newUsdc));
+    }
+
+
+    function testSetTokenAddress() public {
+        assertEq(address(factory.token()), address(indexToken));
+        //expect revert for address zero
+        vm.expectRevert("invalid token address");
+        factory.setTokenAddress(address(0));
+        //expect works with non zero address
+        // check event
+        vm.expectEmit(true, true, true, true);
+        emit TokenAddressSet(address(newIndexToken), block.timestamp);
+        //set data
+        factory.setTokenAddress(address(newIndexToken));
+        assertEq(address(factory.token()), address(newIndexToken));
+    }
+
+    function testSetIssuer() public {
+        assertEq(address(factory.issuer()), address(issuer));
+        //expect revert for address zero
+        vm.expectRevert("invalid issuer address");
+        factory.setIssuer(address(0));
+        //expect works with non zero address
+        // check event
+        vm.expectEmit(true, true, true, true);
+        emit IssuerSet(address(newIssuer));
+        //set data
+        factory.setIssuer(address(newIssuer));
+        assertEq(address(factory.issuer()), address(newIssuer));
+    }
+
+
+    function testSetCustodianWallet() public {
+        assertEq(address(factory.custodianWallet()), address(custodianWallet));
+        //expect revert for address zero
+        vm.expectRevert("invalid custodian wallet address");
+        factory.setCustodianWallet(address(0));
+        //expect works with non zero address
+        // check event
+        vm.expectEmit(true, true, true, true);
+        emit CustodianSet(address(newCustodianWallet));
+        //set data
+        factory.setCustodianWallet(address(newCustodianWallet));
+        assertEq(address(factory.custodianWallet()), address(newCustodianWallet));
+    }
+
 
 
     function testMintTokens() public {
@@ -87,12 +233,15 @@ contract CounterTest is Test {
         usdc.approve(address(factory), 1000e6);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
+        assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
-        assertEq(mintRequests[0].requester, add1);
-        assertEq(mintRequests[0].amount, 1000e6);
-        assertEq(mintRequests[0].depositAddress, custodianWallet);
-        assertEq(mintRequests[0].nonce, 0);
-        assertEq(mintRequests[0].timestamp, block.timestamp);
+        assertEq(mintRequests.length, 1);
+        assertEq(mintRequests[nonce].requester, add1);
+        assertEq(mintRequests[nonce].amount, 1000e6);
+        assertEq(mintRequests[nonce].depositAddress, custodianWallet);
+        assertEq(mintRequests[nonce].nonce, 0);
+        assertEq(mintRequests[nonce].timestamp, block.timestamp);
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
         assertEq(usdc.balanceOf(custodianWallet), 1000e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
@@ -101,11 +250,13 @@ contract CounterTest is Test {
         vm.startPrank(issuer);
         factory.confirmMintRequest(requestHash, 10e18);
         //check results
-        assertEq(indexToken.balanceOf(add1), 10e18);        
+        mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.APPROVED, true);
+        assertEq(indexToken.balanceOf(add1), 10e18);
     }
 
 
-    function testBurnTokens() public {
+    function testErroConfirmNotPendingRequest() public {
         IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 0);
         usdc.transfer(add1, 1000e6);
@@ -113,12 +264,15 @@ contract CounterTest is Test {
         usdc.approve(address(factory), 1000e6);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
+        assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
-        assertEq(mintRequests[0].requester, add1);
-        assertEq(mintRequests[0].amount, 1000e6);
-        assertEq(mintRequests[0].depositAddress, custodianWallet);
-        assertEq(mintRequests[0].nonce, 0);
-        assertEq(mintRequests[0].timestamp, block.timestamp);
+        assertEq(mintRequests.length, 1);
+        assertEq(mintRequests[nonce].requester, add1);
+        assertEq(mintRequests[nonce].amount, 1000e6);
+        assertEq(mintRequests[nonce].depositAddress, custodianWallet);
+        assertEq(mintRequests[nonce].nonce, 0);
+        assertEq(mintRequests[nonce].timestamp, block.timestamp);
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
         assertEq(usdc.balanceOf(custodianWallet), 1000e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
@@ -127,16 +281,146 @@ contract CounterTest is Test {
         vm.startPrank(issuer);
         factory.confirmMintRequest(requestHash, 10e18);
         //check results
+        mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.APPROVED, true);
+        assertEq(indexToken.balanceOf(add1), 10e18);
+        // getting error when try to confirm again
+        vm.expectRevert("request is not pending");
+        factory.confirmMintRequest(requestHash, 10e18);
+    }
+
+
+    function testMintRequestWhenPaused() public {
+        factory.pause();
+        IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests.length, 0);
+        usdc.transfer(add1, 1000e6);
+        vm.startPrank(add1);
+        usdc.approve(address(factory), 1000e6);
+        vm.expectRevert("Pausable: paused");
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);        
+    }
+
+
+    function testBurnTokens() public {
+        IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
+        IndexFactory.Request[] memory burnRequests = factory.getAllBurnRequests();
+        assertEq(mintRequests.length, 0);
+        usdc.transfer(add1, 1000e6);
+        vm.startPrank(add1);
+        //add mint request
+        usdc.approve(address(factory), 1000e6);
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
+        //check results
+        assertEq(factory.mintRequestNonce(requestHash), nonce);
+        mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests[nonce].requester, add1);
+        assertEq(mintRequests[nonce].amount, 1000e6);
+        assertEq(mintRequests[nonce].depositAddress, custodianWallet);
+        assertEq(mintRequests[nonce].nonce, 0);
+        assertEq(mintRequests[nonce].timestamp, block.timestamp);
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
+        assertEq(mintRequests.length, 1);
+        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
+        assertEq(factory.mintRequestNonce(requestHash), nonce);
+        vm.stopPrank();
+        //conform mint request
+        vm.startPrank(issuer);
+        factory.confirmMintRequest(requestHash, 10e18);
+        //check results
+        mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.APPROVED, true);
         assertEq(indexToken.balanceOf(add1), 10e18);
         vm.stopPrank();
 
         //add burn request
         vm.startPrank(add1);
         (uint burnNonce, bytes32 burnRequestHash) = factory.burn(10e18);
+        //check results
+        assertEq(factory.burnRequestNonce(burnRequestHash), burnNonce);
+        burnRequests = factory.getAllBurnRequests();
+        assertEq(burnRequests[burnNonce].requester, add1);
+        assertEq(burnRequests[burnNonce].amount, 10e18);
+        assertEq(burnRequests[burnNonce].depositAddress, add1);
+        assertEq(burnRequests[burnNonce].nonce, burnNonce);
+        assertEq(burnRequests[burnNonce].timestamp, block.timestamp);
+        assertEq(burnRequests[burnNonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(indexToken.balanceOf(add1), 0);
         vm.stopPrank();
         //conform mint request
         vm.startPrank(issuer);
+        factory.confirmBurnRequest(burnRequestHash);
+        //check results
+        burnRequests = factory.getAllBurnRequests();
+        assertEq(burnRequests[burnNonce].requester, add1);
+        assertEq(burnRequests[burnNonce].amount, 10e18);
+        assertEq(burnRequests[burnNonce].depositAddress, add1);
+        assertEq(burnRequests[burnNonce].nonce, burnNonce);
+        assertEq(burnRequests[burnNonce].timestamp, block.timestamp);
+        assertEq(burnRequests[burnNonce].status == IndexFactoryInterface.RequestStatus.APPROVED, true);
+        assertEq(indexToken.balanceOf(add1), 0);
+    }
+
+
+    function testBurnErrorForNonPendingRequest() public {
+        IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
+        IndexFactory.Request[] memory burnRequests = factory.getAllBurnRequests();
+        assertEq(mintRequests.length, 0);
+        usdc.transfer(add1, 1000e6);
+        vm.startPrank(add1);
+        //add mint request
+        usdc.approve(address(factory), 1000e6);
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
+        //check results
+        assertEq(factory.mintRequestNonce(requestHash), nonce);
+        mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests[nonce].requester, add1);
+        assertEq(mintRequests[nonce].amount, 1000e6);
+        assertEq(mintRequests[nonce].depositAddress, custodianWallet);
+        assertEq(mintRequests[nonce].nonce, 0);
+        assertEq(mintRequests[nonce].timestamp, block.timestamp);
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
+        assertEq(mintRequests.length, 1);
+        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
+        assertEq(factory.mintRequestNonce(requestHash), nonce);
+        vm.stopPrank();
+        //conform mint request
+        vm.startPrank(issuer);
+        factory.confirmMintRequest(requestHash, 10e18);
+        //check results
+        mintRequests = factory.getAllMintRequests();
+        assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.APPROVED, true);
+        assertEq(indexToken.balanceOf(add1), 10e18);
+        vm.stopPrank();
+
+        //add burn request
+        vm.startPrank(add1);
+        (uint burnNonce, bytes32 burnRequestHash) = factory.burn(10e18);
+        //check results
+        assertEq(factory.burnRequestNonce(burnRequestHash), burnNonce);
+        burnRequests = factory.getAllBurnRequests();
+        assertEq(burnRequests[burnNonce].requester, add1);
+        assertEq(burnRequests[burnNonce].amount, 10e18);
+        assertEq(burnRequests[burnNonce].depositAddress, add1);
+        assertEq(burnRequests[burnNonce].nonce, burnNonce);
+        assertEq(burnRequests[burnNonce].timestamp, block.timestamp);
+        assertEq(burnRequests[burnNonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
+        assertEq(indexToken.balanceOf(add1), 0);
+        vm.stopPrank();
+        //conform mint request
+        vm.startPrank(issuer);
+        factory.confirmBurnRequest(burnRequestHash);
+        //check results
+        burnRequests = factory.getAllBurnRequests();
+        assertEq(burnRequests[burnNonce].requester, add1);
+        assertEq(burnRequests[burnNonce].amount, 10e18);
+        assertEq(burnRequests[burnNonce].depositAddress, add1);
+        assertEq(burnRequests[burnNonce].nonce, burnNonce);
+        assertEq(burnRequests[burnNonce].timestamp, block.timestamp);
+        assertEq(burnRequests[burnNonce].status == IndexFactoryInterface.RequestStatus.APPROVED, true);
+        assertEq(indexToken.balanceOf(add1), 0);
+        // getting error when try to confirm again
+        vm.expectRevert("request is not pending");
         factory.confirmBurnRequest(burnRequestHash);
     }
 

@@ -92,11 +92,9 @@ interface IndexFactoryInterface {
         uint256 amount
     ) external returns (uint256, bytes32);
 
-    function cancelMintRequest(bytes32 requestHash) external returns (bool);
 
     function confirmMintRequest(bytes32 requestHash, uint _tokenAmount) external returns (bool);
 
-    function rejectMintRequest(bytes32 requestHash) external returns (bool);
 
     function burn(uint256 amount) external returns (uint256, bytes32);
 

@@ -142,28 +142,7 @@ contract IndexFactory is
         return (nonce, requestHash);
     }
 
-    /// @notice Allows a merchant to cancel a mint request
-    /// @param requestHash bytes32
-    /// @return bool
-    function cancelMintRequest(
-        bytes32 requestHash
-    ) external override whenNotPaused returns (bool) {
-        uint256 nonce;
-        Request memory request;
-
-        (nonce, request) = getPendingMintRequest(requestHash);
-
-        require(
-            msg.sender == request.requester,
-            "cancel sender is different than pending request initiator"
-        );
-        mintRequests[nonce].status = RequestStatus.CANCELED;
-
-        emit MintRequestCancel(nonce, msg.sender, requestHash);
-        return true;
-    }
-
-    address public rr;
+    
 
     /// @notice Allows a issuer to confirm a mint request
     /// @param requestHash bytes32
@@ -176,7 +155,6 @@ contract IndexFactory is
         Request memory request;
 
         (nonce, request) = getPendingMintRequest(requestHash);
-        rr = request.requester;
         mintRequests[nonce].status = RequestStatus.APPROVED;
         
         token.mint(request.requester, _tokenAmount);
@@ -193,29 +171,7 @@ contract IndexFactory is
         return true;
     }
 
-    /// @notice Allows a issuer to reject a mint request
-    /// @param requestHash bytes32
-    /// @return bool
-    function rejectMintRequest(
-        bytes32 requestHash
-    ) external override onlyIssuer returns (bool) {
-        uint256 nonce;
-        Request memory request;
-
-        (nonce, request) = getPendingMintRequest(requestHash);
-
-        mintRequests[nonce].status = RequestStatus.REJECTED;
-
-        emit MintRejected(
-            request.nonce,
-            request.requester,
-            request.amount,
-            request.depositAddress,
-            request.timestamp,
-            requestHash
-        );
-        return true;
-    }
+    
 
     /// @notice Allows a merchant to initiate a burn request
     /// @param amount uint256
