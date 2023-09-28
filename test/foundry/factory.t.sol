@@ -4,6 +4,7 @@ pragma solidity ^0.8.7;
 import "forge-std/Test.sol";
 import "../../contracts/test/Token.sol";
 import "../../contracts/token/IndexToken.sol";
+import "../../contracts/token/RequestNFT.sol";
 import "../../contracts/factory/IndexFactory.sol";
 import "../../contracts/factory/IndexFactoryInterface.sol";
 
@@ -92,6 +93,8 @@ contract CounterTest is Test {
     Token public newUsdc;
     IndexToken public indexToken;
     IndexToken public newIndexToken;
+    RequestNFT public nft;
+    RequestNFT public newNft;
     IndexFactory public factory;
     IndexFactory public newFactory;
 
@@ -126,6 +129,16 @@ contract CounterTest is Test {
             feeReceiver,
             1000000e18
         );
+        nft = new RequestNFT(
+             "ANFI NFT",
+             "ANFI NFT",
+             address(0)
+        );
+        newNft = new RequestNFT(
+             "ANFI NFT",
+             "ANFI NFT",
+             address(0)
+        );
         newIndexToken = new IndexToken();
         newIndexToken.initialize(
             "Anti Inflation",
@@ -140,7 +153,8 @@ contract CounterTest is Test {
             issuer,
             address(indexToken),
             address(usdc),
-            6
+            6,
+            address(nft)
         );
         newFactory = new IndexFactory();
         newFactory.initialize(
@@ -148,11 +162,13 @@ contract CounterTest is Test {
             issuer,
             address(indexToken),
             address(usdc),
-            6
+            6,
+            address(nft)
         );
         
 
         indexToken.setMinter(address(factory));
+        nft.setMinter(address(factory));
     }
 
     function testInitialized() public {
@@ -233,6 +249,8 @@ contract CounterTest is Test {
         usdc.approve(address(factory), 1000e6);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
+        assertEq(nft.balanceOf(add1), 1);
+        assertEq(nft.totalSupply(), 2);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 1);
@@ -264,6 +282,8 @@ contract CounterTest is Test {
         usdc.approve(address(factory), 1000e6);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
+        assertEq(nft.balanceOf(add1), 1);
+        assertEq(nft.totalSupply(), 2);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 1);
@@ -312,6 +332,8 @@ contract CounterTest is Test {
         usdc.approve(address(factory), 1000e6);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
+        assertEq(nft.balanceOf(add1), 1);
+        assertEq(nft.totalSupply(), 2);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests[nonce].requester, add1);

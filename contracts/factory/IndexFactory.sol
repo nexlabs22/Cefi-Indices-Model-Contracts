@@ -3,6 +3,7 @@ pragma solidity 0.8.7;
 
 import "./IndexFactoryInterface.sol";
 import "../token/IndexToken.sol";
+import "../token/RequestNFT.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -17,6 +18,7 @@ contract IndexFactory is
     PausableUpgradeable
 {
     IndexToken public token;
+    RequestNFT public nft;
 
     address public custodianWallet;
     address public issuer;
@@ -38,14 +40,15 @@ contract IndexFactory is
         address _issuer,
         address _token,
         address _usdc,
-        uint8 _usdcDecimals
+        uint8 _usdcDecimals,
+        address _nft
     ) external initializer {
         custodianWallet = _custodianWallet;
         issuer = _issuer;
         token = IndexToken(_token);
         usdc = _usdc;
         usdcDecimals = _usdcDecimals;
-
+        nft = RequestNFT(_nft);
         __Ownable_init();
         __Pausable_init();
     }
@@ -93,6 +96,17 @@ contract IndexFactory is
         return true;
     }
 
+    /// @notice set nft address
+    /// @param _nft address
+    /// @return bool
+    function setNFT(address _nft) external onlyOwner returns (bool) {
+        require(_nft != address(0), "invalid nft address");
+        nft = RequestNFT(_nft);
+
+        emit NFTSet(_nft);
+        return true;
+    }
+
     function getAllMintRequests() public view returns (Request[] memory) {
         return mintRequests;
     }
@@ -130,6 +144,9 @@ contract IndexFactory is
         bytes32 requestHash = calcRequestHash(request);
         mintRequestNonce[requestHash] = nonce;
         mintRequests.push(request);
+
+        //mint nft
+        nft.addMintRequestNFT(msg.sender, amount);
 
         emit MintRequestAdd(
             nonce,
@@ -196,6 +213,9 @@ contract IndexFactory is
         burnRequests.push(request);
 
         token.burn(msg.sender, amount);
+
+        //mint nft
+        nft.addBurnRequestNFT(msg.sender, amount);
 
         emit Burned(
             nonce,

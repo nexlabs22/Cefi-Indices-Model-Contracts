@@ -5,6 +5,8 @@ interface IndexFactoryInterface {
 
     event IssuerSet(address indexed issuer);
 
+    event NFTSet(address indexed nft);
+
     event CustodianSet(address indexed custodian);
 
     event UsdcAddressSet(address indexed usdc, uint8 indexed decimals, uint time);
