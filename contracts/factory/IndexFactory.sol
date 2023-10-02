@@ -18,13 +18,14 @@ contract IndexFactory is
     PausableUpgradeable
 {
     IndexToken public token;
-    RequestNFT public nft;
 
     address public custodianWallet;
     address public issuer;
 
     address public usdc;
     uint8 public usdcDecimals;
+
+
 
     // mapping between a mint request hash and the corresponding request nonce.
     mapping(bytes32 => uint256) public mintRequestNonce;
@@ -34,6 +35,8 @@ contract IndexFactory is
 
     Request[] public mintRequests;
     Request[] public burnRequests;
+
+    RequestNFT public nft;
 
     function initialize(
         address _custodianWallet,
