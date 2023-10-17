@@ -25,6 +25,9 @@ contract IndexFactory is
     address public usdc;
     uint8 public usdcDecimals;
 
+    uint8 public feeRate = 10; // 10/10000 = 0.1%
+    uint256 public latestFeeUpdate;
+
 
 
     // mapping between a mint request hash and the corresponding request nonce.
@@ -60,6 +63,15 @@ contract IndexFactory is
         require(msg.sender == issuer, "sender not a issuer.");
         _;
     }
+
+//Notice: newFee should be between 1 to 100 (0.01% - 1%)
+  function setFeeRate(uint8 _newFee) public onlyOwner {
+    uint256 distance = block.timestamp - latestFeeUpdate;
+    require(distance / 60 / 60 > 12, "You should wait at least 12 hours after the latest update");
+    require(_newFee <= 100 && _newFee >= 1, "The newFee should be between 1 and 100 (0.01% - 1%)");
+    feeRate = _newFee;
+    latestFeeUpdate = block.timestamp;
+  }
 
     function setUsdcAddress(
         address _usdc,
@@ -124,12 +136,22 @@ contract IndexFactory is
     function addMintRequest(
         uint256 amount
     ) external override whenNotPaused returns (uint256, bytes32) {
+        uint feeAmount = (amount*feeRate)/10000;
+        uint finalAmount = amount - feeAmount;
+
         //transfer usdc to custodian wallet
         SafeERC20.safeTransferFrom(
             IERC20(usdc),
             msg.sender,
             custodianWallet,
-            amount
+            finalAmount
+        );
+        //transfer fee to the owner
+        SafeERC20.safeTransferFrom(
+            IERC20(usdc),
+            msg.sender,
+            owner(),
+            feeAmount
         );
 
         uint256 nonce = mintRequests.length;
@@ -137,7 +159,7 @@ contract IndexFactory is
 
         Request memory request = Request({
             requester: msg.sender,
-            amount: amount,
+            amount: finalAmount,
             depositAddress: custodianWallet,
             nonce: nonce,
             timestamp: timestamp,
@@ -149,12 +171,12 @@ contract IndexFactory is
         mintRequests.push(request);
 
         //mint nft
-        nft.addMintRequestNFT(msg.sender, amount);
+        nft.addMintRequestNFT(msg.sender, finalAmount);
 
         emit MintRequestAdd(
             nonce,
             msg.sender,
-            amount,
+            finalAmount,
             custodianWallet,
             timestamp,
             requestHash
