@@ -137,14 +137,14 @@ contract IndexFactory is
         uint256 amount
     ) external override whenNotPaused returns (uint256, bytes32) {
         uint feeAmount = (amount*feeRate)/10000;
-        uint finalAmount = amount - feeAmount;
+        uint finalAmount = amount + feeAmount;
 
         //transfer usdc to custodian wallet
         SafeERC20.safeTransferFrom(
             IERC20(usdc),
             msg.sender,
             custodianWallet,
-            finalAmount
+            amount
         );
         //transfer fee to the owner
         SafeERC20.safeTransferFrom(
@@ -159,7 +159,7 @@ contract IndexFactory is
 
         Request memory request = Request({
             requester: msg.sender,
-            amount: finalAmount,
+            amount: amount,
             depositAddress: custodianWallet,
             nonce: nonce,
             timestamp: timestamp,
@@ -171,12 +171,12 @@ contract IndexFactory is
         mintRequests.push(request);
 
         //mint nft
-        nft.addMintRequestNFT(msg.sender, finalAmount);
+        nft.addMintRequestNFT(msg.sender, amount);
 
         emit MintRequestAdd(
             nonce,
             msg.sender,
-            finalAmount,
+            amount,
             custodianWallet,
             timestamp,
             requestHash

@@ -15,6 +15,8 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
     uint256 private tokenIdCounter;
     address public minter;
 
+    string public exampleURL = "https://product-nextjs-sandy.vercel.app/api/getNFT?type=mint&amount=10000000000000000&time=353535";
+    string public baseUrl = "https://product-nextjs-sandy.vercel.app/api/getNFT?type=";
 
     constructor(
         string memory _name,
@@ -43,12 +45,11 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
         uint256 tokenId = tokenIdCounter;
         _mint(_userAddress, tokenId);
 
-        string memory svgData = generateSVG(
+        string memory tokenURI = buildMetadata(
             _amount,
             block.timestamp,
-            "Mint Token Request"
+            "mint"
         );
-        string memory tokenURI = generateTokenURI(svgData);
 
         _setTokenURI(tokenId, tokenURI);
 
@@ -63,12 +64,12 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
         uint256 tokenId = tokenIdCounter;
         _mint(_userAddress, tokenId);
 
-        string memory svgData = generateSVG(
+        
+        string memory tokenURI = buildMetadata(
             _amount,
             block.timestamp,
-            "Burn Token Request"
+            "burn"
         );
-        string memory tokenURI = generateTokenURI(svgData);
 
         _setTokenURI(tokenId, tokenURI);
 
@@ -77,55 +78,50 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
     }
 
 
-    function generateSVG(
+    function buildMetadata(
         uint256 _amount,
         uint256 _timestamp,
         string memory _requestType
-    ) internal pure returns (string memory) {
-        string memory currentTime = formatTimestamp(_timestamp);
-        string memory svg = string(
-            abi.encodePacked(
-                '<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">',
-                '<rect width="100%" height="100%" fill="lightgray" />',
-                '<text x="50%" y="30%" dominant-baseline="middle" text-anchor="middle" font-size="16">',
-                _requestType,
-                "</text>",
-                '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="16">',
-                "Amount: ",
-                uintToStr(_amount),
-                "</text>",
-                '<text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-size="16">',
-                "Time: ",
-                currentTime,
-                "</text>",
-                "</svg>"
-            )
-        );
-        return svg;
-    }
-    
-
-
-    function generateTokenURI(
-        string memory _svgData
-    ) internal pure returns (string memory) {
-        string memory json = string(
-            abi.encodePacked(
-                '{"name": "Token Receipt #',
-                '", "description": "An NFT with amount and time", "image": "data:image/svg+xml;base64,',
-                Base64.encode(bytes(_svgData)),
-                '"}'
-            )
-        );
+    )
+        private
+        view
+        returns (string memory)
+    {
+        string memory uri = generateURI(_requestType, _amount, _timestamp);
         return
             string(
                 abi.encodePacked(
                     "data:application/json;base64,",
-                    Base64.encode(bytes(json))
+                    Base64.encode(
+                        bytes(
+                            abi.encodePacked(
+                                '{"name":"Dynamic NFT", "description":"Dynamic NFT Test", ',
+                                '"image": ',
+                                '"',
+                                uri,
+                                '"',
+                                "}"
+                            )
+                        )
+                    )
                 )
             );
     }
 
+
+    function generateURI(string memory _requestType, uint amount, uint _timestamp) public view returns(string memory) {
+        string memory currentTime = formatTimestamp(_timestamp);
+
+        return string(abi.encodePacked(
+            baseUrl, 
+            _requestType,
+            "&amount=",
+            uintToStr(amount),
+            "&time=",
+            currentTime
+             ));
+
+    }
 
     function uintToStr(uint256 _value) internal pure returns (string memory) {
         if (_value == 0) {
