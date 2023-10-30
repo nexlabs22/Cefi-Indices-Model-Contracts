@@ -244,9 +244,9 @@ contract CounterTest is Test {
     function testMintTokens() public {
         IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 0);
-        usdc.transfer(add1, 1000e6);
+        usdc.transfer(add1, 1000e6 + 1000e6*10/10000);
         vm.startPrank(add1);
-        usdc.approve(address(factory), 1000e6);
+        usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
         assertEq(nft.balanceOf(add1), 1);
@@ -255,13 +255,13 @@ contract CounterTest is Test {
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 1);
         assertEq(mintRequests[nonce].requester, add1);
-        assertEq(mintRequests[nonce].amount, 1000e6 - (1000e6*10)/10000);
+        assertEq(mintRequests[nonce].amount, 1000e6);
         assertEq(mintRequests[nonce].depositAddress, custodianWallet);
         assertEq(mintRequests[nonce].nonce, 0);
         assertEq(mintRequests[nonce].timestamp, block.timestamp);
         assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
-        assertEq(usdc.balanceOf(custodianWallet), 1000e6 - (1000e6*10)/10000);
+        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         vm.stopPrank();
         //conform mint request
@@ -277,9 +277,9 @@ contract CounterTest is Test {
     function testErroConfirmNotPendingRequest() public {
         IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 0);
-        usdc.transfer(add1, 1000e6);
+        usdc.transfer(add1, 1000e6 + 1000e6*10/10000);
         vm.startPrank(add1);
-        usdc.approve(address(factory), 1000e6);
+        usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
         assertEq(nft.balanceOf(add1), 1);
@@ -288,13 +288,13 @@ contract CounterTest is Test {
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 1);
         assertEq(mintRequests[nonce].requester, add1);
-        assertEq(mintRequests[nonce].amount, 1000e6 - (1000e6*10)/10000);
+        assertEq(mintRequests[nonce].amount, 1000e6);
         assertEq(mintRequests[nonce].depositAddress, custodianWallet);
         assertEq(mintRequests[nonce].nonce, 0);
         assertEq(mintRequests[nonce].timestamp, block.timestamp);
         assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
-        assertEq(usdc.balanceOf(custodianWallet), 1000e6 - (1000e6*10)/10000);
+        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         vm.stopPrank();
         //conform mint request
@@ -314,9 +314,9 @@ contract CounterTest is Test {
         factory.pause();
         IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests.length, 0);
-        usdc.transfer(add1, 1000e6);
+        usdc.transfer(add1, 1000e6 + 1000e6*10/10000);
         vm.startPrank(add1);
-        usdc.approve(address(factory), 1000e6);
+        usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
         vm.expectRevert("Pausable: paused");
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);        
     }
@@ -326,10 +326,10 @@ contract CounterTest is Test {
         IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
         IndexFactory.Request[] memory burnRequests = factory.getAllBurnRequests();
         assertEq(mintRequests.length, 0);
-        usdc.transfer(add1, 1000e6);
+        usdc.transfer(add1, 1000e6 + 1000e6*10/10000);
         vm.startPrank(add1);
         //add mint request
-        usdc.approve(address(factory), 1000e6);
+        usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
         assertEq(nft.balanceOf(add1), 1);
@@ -337,13 +337,13 @@ contract CounterTest is Test {
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests[nonce].requester, add1);
-        assertEq(mintRequests[nonce].amount, 1000e6 - (1000e6*10)/10000);
+        assertEq(mintRequests[nonce].amount, 1000e6);
         assertEq(mintRequests[nonce].depositAddress, custodianWallet);
         assertEq(mintRequests[nonce].nonce, 0);
         assertEq(mintRequests[nonce].timestamp, block.timestamp);
         assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
-        assertEq(usdc.balanceOf(custodianWallet), 1000e6 - (1000e6*10)/10000);
+        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         vm.stopPrank();
         //conform mint request
@@ -388,22 +388,22 @@ contract CounterTest is Test {
         IndexFactory.Request[] memory mintRequests = factory.getAllMintRequests();
         IndexFactory.Request[] memory burnRequests = factory.getAllBurnRequests();
         assertEq(mintRequests.length, 0);
-        usdc.transfer(add1, 1000e6);
+        usdc.transfer(add1, 1000e6 + 1000e6*10/10000);
         vm.startPrank(add1);
         //add mint request
-        usdc.approve(address(factory), 1000e6);
+        usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
         (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
         //check results
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests[nonce].requester, add1);
-        assertEq(mintRequests[nonce].amount, 1000e6 - (1000e6*10)/10000);
+        assertEq(mintRequests[nonce].amount, 1000e6);
         assertEq(mintRequests[nonce].depositAddress, custodianWallet);
         assertEq(mintRequests[nonce].nonce, 0);
         assertEq(mintRequests[nonce].timestamp, block.timestamp);
         assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
-        assertEq(usdc.balanceOf(custodianWallet), 1000e6 - (1000e6*10)/10000);
+        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         vm.stopPrank();
         //conform mint request

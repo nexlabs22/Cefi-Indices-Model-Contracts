@@ -171,7 +171,7 @@ contract IndexFactory is
         mintRequests.push(request);
 
         //mint nft
-        nft.addMintRequestNFT(msg.sender, amount);
+        nft.addMintRequestNFT(token.name(), msg.sender, amount);
 
         emit MintRequestAdd(
             nonce,
@@ -240,7 +240,7 @@ contract IndexFactory is
         token.burn(msg.sender, amount);
 
         //mint nft
-        nft.addBurnRequestNFT(msg.sender, amount);
+        nft.addBurnRequestNFT(token.name(), msg.sender, amount);
 
         emit Burned(
             nonce,

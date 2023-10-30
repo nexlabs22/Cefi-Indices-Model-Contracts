@@ -40,12 +40,13 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
     }
 
     
-    function addMintRequestNFT(address _userAddress, uint256 _amount) public {
+    function addMintRequestNFT(string memory _indexName, address _userAddress, uint256 _amount) public {
 
         uint256 tokenId = tokenIdCounter;
         _mint(_userAddress, tokenId);
 
         string memory tokenURI = buildMetadata(
+            _indexName,
             _amount,
             block.timestamp,
             "mint"
@@ -59,13 +60,14 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
     }
 
 
-    function addBurnRequestNFT(address _userAddress, uint256 _amount) public {
+    function addBurnRequestNFT(string memory _indexName, address _userAddress, uint256 _amount) public {
 
         uint256 tokenId = tokenIdCounter;
         _mint(_userAddress, tokenId);
 
         
         string memory tokenURI = buildMetadata(
+            _indexName,
             _amount,
             block.timestamp,
             "burn"
@@ -79,6 +81,7 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
 
 
     function buildMetadata(
+        string memory _indexName,
         uint256 _amount,
         uint256 _timestamp,
         string memory _requestType
@@ -87,7 +90,7 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
         view
         returns (string memory)
     {
-        string memory uri = generateURI(_requestType, _amount, _timestamp);
+        string memory uri = generateURI(_indexName, _requestType, _amount, _timestamp);
         return
             string(
                 abi.encodePacked(
@@ -109,7 +112,7 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
     }
 
 
-    function generateURI(string memory _requestType, uint amount, uint _timestamp) public view returns(string memory) {
+    function generateURI(string memory _indexName, string memory _requestType, uint amount, uint _timestamp) public view returns(string memory) {
         string memory currentTime = formatTimestamp(_timestamp);
 
         return string(abi.encodePacked(
@@ -118,7 +121,9 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
             "&amount=",
             uintToStr(amount),
             "&time=",
-            currentTime
+            currentTime,
+            "&indexName=",
+            _indexName
              ));
 
     }
