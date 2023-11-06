@@ -1,4 +1,4 @@
-import { goerliAnfiIndexToken, goerliUsdtAddress } from "../network";
+import { goerliAnfiIndexToken, goerliCrypto5IndexToken, goerliUsdtAddress, goerliAnfiNFT } from '../network';
 
 // import { ethers, upgrades } from "hardhat";
 const { ethers, upgrades, network, hre } = require('hardhat');
@@ -13,9 +13,10 @@ async function deployFactory() {
   const indexFactory = await upgrades.deployProxy(IndexFactory, [
       deployer.address, //custodian wallet
       deployer.address, //issuer wallet
-      goerliAnfiIndexToken as string,
+      goerliCrypto5IndexToken as string,
       goerliUsdtAddress as string,
-      '18'
+      '18',
+      goerliAnfiNFT
   ], { initializer: 'initialize' });
 
 

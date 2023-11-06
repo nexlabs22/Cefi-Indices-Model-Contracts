@@ -25,7 +25,7 @@ contract IndexFactory is
     address public usdc;
     uint8 public usdcDecimals;
 
-    uint8 public feeRate = 10; // 10/10000 = 0.1%
+    uint8 public feeRate; // 10/10000 = 0.1%
     uint256 public latestFeeUpdate;
 
 
@@ -57,6 +57,7 @@ contract IndexFactory is
         nft = RequestNFT(_nft);
         __Ownable_init();
         __Pausable_init();
+        feeRate = 10;
     }
 
     modifier onlyIssuer() {
@@ -134,7 +135,8 @@ contract IndexFactory is
     /// @param amount uint256
     /// @return bool
     function addMintRequest(
-        uint256 amount
+        uint256 amount,
+        address user
     ) external override whenNotPaused returns (uint256, bytes32) {
         uint feeAmount = (amount*feeRate)/10000;
         uint finalAmount = amount + feeAmount;
@@ -158,7 +160,7 @@ contract IndexFactory is
         uint256 timestamp = getTimestamp();
 
         Request memory request = Request({
-            requester: msg.sender,
+            requester: user,
             amount: amount,
             depositAddress: custodianWallet,
             nonce: nonce,
@@ -171,11 +173,11 @@ contract IndexFactory is
         mintRequests.push(request);
 
         //mint nft
-        nft.addMintRequestNFT(token.name(), msg.sender, amount);
+        nft.addMintRequestNFT(token.name(), user, amount);
 
         emit MintRequestAdd(
             nonce,
-            msg.sender,
+            user,
             amount,
             custodianWallet,
             timestamp,
@@ -219,15 +221,16 @@ contract IndexFactory is
     /// @param amount uint256
     /// @return bool
     function burn(
-        uint256 amount
+        uint256 amount,
+        address user
     ) external override whenNotPaused returns (uint256, bytes32) {
         uint256 nonce = burnRequests.length;
         uint256 timestamp = getTimestamp();
 
         Request memory request = Request({
-            requester: msg.sender,
+            requester: user,
             amount: amount,
-            depositAddress: msg.sender,
+            depositAddress: user,
             nonce: nonce,
             timestamp: timestamp,
             status: RequestStatus.PENDING
@@ -240,11 +243,11 @@ contract IndexFactory is
         token.burn(msg.sender, amount);
 
         //mint nft
-        nft.addBurnRequestNFT(token.name(), msg.sender, amount);
+        nft.addBurnRequestNFT(token.name(), user, amount);
 
         emit Burned(
             nonce,
-            msg.sender,
+            user,
             amount,
             custodianWallet,
             timestamp,

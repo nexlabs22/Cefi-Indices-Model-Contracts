@@ -91,14 +91,15 @@ interface IndexFactoryInterface {
 
     
     function addMintRequest(
-        uint256 amount
+        uint256 amount,
+        address user
     ) external returns (uint256, bytes32);
 
 
     function confirmMintRequest(bytes32 requestHash, uint _tokenAmount) external returns (bool);
 
 
-    function burn(uint256 amount) external returns (uint256, bytes32);
+    function burn(uint256 amount, address user) external returns (uint256, bytes32);
 
     function confirmBurnRequest(bytes32 requestHash) external returns (bool);
 

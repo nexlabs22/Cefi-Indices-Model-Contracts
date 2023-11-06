@@ -247,7 +247,7 @@ contract CounterTest is Test {
         usdc.transfer(add1, 1000e6 + 1000e6*10/10000);
         vm.startPrank(add1);
         usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
-        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6, add1);
         //check results
         assertEq(nft.balanceOf(add1), 1);
         assertEq(nft.totalSupply(), 2);
@@ -280,7 +280,7 @@ contract CounterTest is Test {
         usdc.transfer(add1, 1000e6 + 1000e6*10/10000);
         vm.startPrank(add1);
         usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
-        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6, add1);
         //check results
         assertEq(nft.balanceOf(add1), 1);
         assertEq(nft.totalSupply(), 2);
@@ -318,7 +318,7 @@ contract CounterTest is Test {
         vm.startPrank(add1);
         usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
         vm.expectRevert("Pausable: paused");
-        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);        
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6, add1);        
     }
 
 
@@ -330,7 +330,7 @@ contract CounterTest is Test {
         vm.startPrank(add1);
         //add mint request
         usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
-        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6, add1);
         //check results
         assertEq(nft.balanceOf(add1), 1);
         assertEq(nft.totalSupply(), 2);
@@ -357,7 +357,7 @@ contract CounterTest is Test {
 
         //add burn request
         vm.startPrank(add1);
-        (uint burnNonce, bytes32 burnRequestHash) = factory.burn(10e18);
+        (uint burnNonce, bytes32 burnRequestHash) = factory.burn(10e18, add1);
         //check results
         assertEq(factory.burnRequestNonce(burnRequestHash), burnNonce);
         burnRequests = factory.getAllBurnRequests();
@@ -392,7 +392,7 @@ contract CounterTest is Test {
         vm.startPrank(add1);
         //add mint request
         usdc.approve(address(factory), 1000e6 + 1000e6*10/10000);
-        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6);
+        (uint nonce, bytes32 requestHash) = factory.addMintRequest(1000e6, add1);
         //check results
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         mintRequests = factory.getAllMintRequests();
@@ -417,7 +417,7 @@ contract CounterTest is Test {
 
         //add burn request
         vm.startPrank(add1);
-        (uint burnNonce, bytes32 burnRequestHash) = factory.burn(10e18);
+        (uint burnNonce, bytes32 burnRequestHash) = factory.burn(10e18, add1);
         //check results
         assertEq(factory.burnRequestNonce(burnRequestHash), burnNonce);
         burnRequests = factory.getAllBurnRequests();

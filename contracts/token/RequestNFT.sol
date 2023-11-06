@@ -15,8 +15,10 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
     uint256 private tokenIdCounter;
     address public minter;
 
-    string public exampleURL = "https://product-nextjs-sandy.vercel.app/api/getNFT?type=mint&amount=10000000000000000&time=353535";
-    string public baseUrl = "https://product-nextjs-sandy.vercel.app/api/getNFT?type=";
+    string public exampleURL = "https://dapp-spot-index.vercel.app/api/getNFT?type=mint&amount=10000000000000000&time=353535";
+    // string public exampleURL = "https://product-nextjs-sandy.vercel.app/api/getNFT?type=mint&amount=10000000000000000&time=353535";
+    string public baseUrl = "https://dapp-spot-index.vercel.app/api/getNFT?type=";
+    // string public baseUrl = "https://product-nextjs-sandy.vercel.app/api/getNFT?type=";
 
     constructor(
         string memory _name,
@@ -125,7 +127,6 @@ contract RequestNFT is ERC721URIStorage, Ownable, IERC721Supply {
             "&indexName=",
             _indexName
              ));
-
     }
 
     function uintToStr(uint256 _value) internal pure returns (string memory) {
