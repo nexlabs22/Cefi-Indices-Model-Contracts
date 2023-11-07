@@ -26,7 +26,6 @@ contract IndexFactory is
     uint8 public usdcDecimals;
 
     uint8 public feeRate; // 10/10000 = 0.1%
-    uint256 public latestFeeUpdate;
 
 
 
@@ -40,6 +39,8 @@ contract IndexFactory is
     Request[] public burnRequests;
 
     RequestNFT public nft;
+    uint256 public latestFeeUpdate;
+
 
     function initialize(
         address _custodianWallet,

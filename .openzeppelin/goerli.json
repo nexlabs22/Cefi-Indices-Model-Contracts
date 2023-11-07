@@ -1005,6 +1005,267 @@
           }
         }
       }
+    },
+    "25c9c9c30e16a5d360006d2228bb037b9aab4cf9a9c098f9ca0c0ad461082732": {
+      "address": "0x59126Ebf00E199a2e9DEd3EA59eA6688015Db5d7",
+      "txHash": "0x58a7c8a51b117f391de26f95f43d27b981fb22e6ccf33f6a7f994781312d656d",
+      "layout": {
+        "solcVersion": "0.8.7",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_contract(IndexToken)7087",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:20"
+          },
+          {
+            "label": "custodianWallet",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_address",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:22"
+          },
+          {
+            "label": "issuer",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_address",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:23"
+          },
+          {
+            "label": "usdc",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_address",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:25"
+          },
+          {
+            "label": "usdcDecimals",
+            "offset": 20,
+            "slot": "154",
+            "type": "t_uint8",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:26"
+          },
+          {
+            "label": "feeRate",
+            "offset": 21,
+            "slot": "154",
+            "type": "t_uint8",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:28"
+          },
+          {
+            "label": "mintRequestNonce",
+            "offset": 0,
+            "slot": "155",
+            "type": "t_mapping(t_bytes32,t_uint256)",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:33"
+          },
+          {
+            "label": "burnRequestNonce",
+            "offset": 0,
+            "slot": "156",
+            "type": "t_mapping(t_bytes32,t_uint256)",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:36"
+          },
+          {
+            "label": "mintRequests",
+            "offset": 0,
+            "slot": "157",
+            "type": "t_array(t_struct(Request)6313_storage)dyn_storage",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:38"
+          },
+          {
+            "label": "burnRequests",
+            "offset": 0,
+            "slot": "158",
+            "type": "t_array(t_struct(Request)6313_storage)dyn_storage",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:39"
+          },
+          {
+            "label": "nft",
+            "offset": 0,
+            "slot": "159",
+            "type": "t_contract(RequestNFT)7526",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:41"
+          },
+          {
+            "label": "latestFeeUpdate",
+            "offset": 0,
+            "slot": "160",
+            "type": "t_uint256",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:42"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(Request)6313_storage)dyn_storage": {
+            "label": "struct IndexFactoryInterface.Request[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IndexToken)7087": {
+            "label": "contract IndexToken",
+            "numberOfBytes": "20"
+          },
+          "t_contract(RequestNFT)7526": {
+            "label": "contract RequestNFT",
+            "numberOfBytes": "20"
+          },
+          "t_enum(RequestStatus)6299": {
+            "label": "enum IndexFactoryInterface.RequestStatus",
+            "members": [
+              "NULL",
+              "PENDING",
+              "CANCELED",
+              "APPROVED",
+              "REJECTED"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_bytes32,t_uint256)": {
+            "label": "mapping(bytes32 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Request)6313_storage": {
+            "label": "struct IndexFactoryInterface.Request",
+            "members": [
+              {
+                "label": "requester",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "depositAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "nonce",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "timestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "status",
+                "type": "t_enum(RequestStatus)6299",
+                "offset": 0,
+                "slot": "5"
+              }
+            ],
+            "numberOfBytes": "192"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
     }
   }
 }
