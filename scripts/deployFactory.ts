@@ -13,7 +13,7 @@ async function deployFactory() {
   const indexFactory = await upgrades.deployProxy(IndexFactory, [
       deployer.address, //custodian wallet
       deployer.address, //issuer wallet
-      goerliCrypto5IndexToken as string,
+      goerliAnfiIndexToken as string,
       goerliUsdtAddress as string,
       '18',
       goerliAnfiNFT
