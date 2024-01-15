@@ -775,25 +775,25 @@
   },
   "ast": {
     "absolutePath": "node_modules/@openzeppelin/contracts/interfaces/IERC4906.sol",
-    "id": 52442,
+    "id": 56428,
     "exportedSymbols": {
       "IERC165": [
-        53825
+        57811
       ],
       "IERC4906": [
-        52441
+        56427
       ],
       "IERC721": [
-        53515
+        57501
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "107:703:35",
+    "src": "107:703:50",
     "nodes": [
       {
-        "id": 52421,
+        "id": 56407,
         "nodeType": "PragmaDirective",
-        "src": "107:23:35",
+        "src": "107:23:50",
         "nodes": [],
         "literals": [
           "solidity",
@@ -803,64 +803,64 @@
         ]
       },
       {
-        "id": 52422,
+        "id": 56408,
         "nodeType": "ImportDirective",
-        "src": "132:23:35",
+        "src": "132:23:50",
         "nodes": [],
         "absolutePath": "node_modules/@openzeppelin/contracts/interfaces/IERC165.sol",
         "file": "./IERC165.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 52442,
-        "sourceUnit": 53397,
+        "scope": 56428,
+        "sourceUnit": 57383,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 52423,
+        "id": 56409,
         "nodeType": "ImportDirective",
-        "src": "156:23:35",
+        "src": "156:23:50",
         "nodes": [],
         "absolutePath": "node_modules/@openzeppelin/contracts/interfaces/IERC721.sol",
         "file": "./IERC721.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 52442,
-        "sourceUnit": 53400,
+        "scope": 56428,
+        "sourceUnit": 57386,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 52441,
+        "id": 56427,
         "nodeType": "ContractDefinition",
-        "src": "226:583:35",
+        "src": "226:583:50",
         "nodes": [
           {
-            "id": 52433,
+            "id": 56419,
             "nodeType": "EventDefinition",
-            "src": "477:39:35",
+            "src": "477:39:50",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 52429,
+              "id": 56415,
               "nodeType": "StructuredDocumentation",
-              "src": "271:201:35",
+              "src": "271:201:50",
               "text": "@dev This event emits when the metadata of a token is changed.\n So that the third-party platforms such as NFT market could\n timely update the images and related attributes of the NFT."
             },
             "name": "MetadataUpdate",
-            "nameLocation": "483:14:35",
+            "nameLocation": "483:14:50",
             "parameters": {
-              "id": 52432,
+              "id": 56418,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 52431,
+                  "id": 56417,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_tokenId",
-                  "nameLocation": "506:8:35",
+                  "nameLocation": "506:8:50",
                   "nodeType": "VariableDeclaration",
-                  "scope": 52433,
-                  "src": "498:16:35",
+                  "scope": 56419,
+                  "src": "498:16:50",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -868,10 +868,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 52430,
+                    "id": 56416,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "498:7:35",
+                    "src": "498:7:50",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -880,37 +880,37 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "497:18:35"
+              "src": "497:18:50"
             }
           },
           {
-            "id": 52440,
+            "id": 56426,
             "nodeType": "EventDefinition",
-            "src": "739:68:35",
+            "src": "739:68:50",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 52434,
+              "id": 56420,
               "nodeType": "StructuredDocumentation",
-              "src": "522:212:35",
+              "src": "522:212:50",
               "text": "@dev This event emits when the metadata of a range of tokens is changed.\n So that the third-party platforms such as NFT market could\n timely update the images and related attributes of the NFTs."
             },
             "name": "BatchMetadataUpdate",
-            "nameLocation": "745:19:35",
+            "nameLocation": "745:19:50",
             "parameters": {
-              "id": 52439,
+              "id": 56425,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 52436,
+                  "id": 56422,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_fromTokenId",
-                  "nameLocation": "773:12:35",
+                  "nameLocation": "773:12:50",
                   "nodeType": "VariableDeclaration",
-                  "scope": 52440,
-                  "src": "765:20:35",
+                  "scope": 56426,
+                  "src": "765:20:50",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -918,10 +918,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 52435,
+                    "id": 56421,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "765:7:35",
+                    "src": "765:7:50",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -931,14 +931,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 52438,
+                  "id": 56424,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_toTokenId",
-                  "nameLocation": "795:10:35",
+                  "nameLocation": "795:10:50",
                   "nodeType": "VariableDeclaration",
-                  "scope": 52440,
-                  "src": "787:18:35",
+                  "scope": 56426,
+                  "src": "787:18:50",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -946,10 +946,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 52437,
+                    "id": 56423,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "787:7:35",
+                    "src": "787:7:50",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -958,7 +958,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "764:42:35"
+              "src": "764:42:50"
             }
           }
         ],
@@ -966,50 +966,50 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 52425,
+              "id": 56411,
               "name": "IERC165",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 53825,
-              "src": "248:7:35"
+              "referencedDeclaration": 57811,
+              "src": "248:7:50"
             },
-            "id": 52426,
+            "id": 56412,
             "nodeType": "InheritanceSpecifier",
-            "src": "248:7:35"
+            "src": "248:7:50"
           },
           {
             "baseName": {
-              "id": 52427,
+              "id": 56413,
               "name": "IERC721",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 53515,
-              "src": "257:7:35"
+              "referencedDeclaration": 57501,
+              "src": "257:7:50"
             },
-            "id": 52428,
+            "id": 56414,
             "nodeType": "InheritanceSpecifier",
-            "src": "257:7:35"
+            "src": "257:7:50"
           }
         ],
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 52424,
+          "id": 56410,
           "nodeType": "StructuredDocumentation",
-          "src": "181:45:35",
+          "src": "181:45:50",
           "text": "@title EIP-721 Metadata Update Extension"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          52441,
-          53515,
-          53825
+          56427,
+          57501,
+          57811
         ],
         "name": "IERC4906",
-        "nameLocation": "236:8:35",
-        "scope": 52442,
+        "nameLocation": "236:8:50",
+        "scope": 56428,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 35
+  "id": 50
 }

@@ -21,7 +21,7 @@ interface IndexFactoryInterface {
         uint256 indexed nonce,
         address indexed requester,
         uint256 amount,
-        address depositAddress,
+        address[] depositAddresses,
         uint256 timestamp,
         bytes32 requestHash
     );
@@ -32,7 +32,7 @@ interface IndexFactoryInterface {
         uint256 indexed nonce,
         address indexed requester,
         uint256 amount,
-        address depositAddress,
+        address[] depositAddresses,
         uint256 timestamp,
         bytes32 requestHash
     );
@@ -41,7 +41,7 @@ interface IndexFactoryInterface {
         uint256 indexed nonce,
         address indexed requester,
         uint256 amount,
-        address depositAddress,
+        address[] depositAddresses,
         uint256 timestamp,
         bytes32 requestHash
     );
@@ -50,7 +50,7 @@ interface IndexFactoryInterface {
         uint256 indexed nonce,
         address indexed requester,
         uint256 amount,
-        address depositAddress,
+        address[] depositAddresses,
         uint256 timestamp,
         bytes32 requestHash
     );
@@ -59,7 +59,7 @@ interface IndexFactoryInterface {
         uint256 indexed nonce,
         address indexed requester,
         uint256 amount,
-        address depositAddress,
+        address[] depositAddresses,
         uint256 timestamp,
         bytes32 inputRequestHash
     );
@@ -79,7 +79,7 @@ interface IndexFactoryInterface {
     struct Request {
         address requester; // sender of the request.
         uint256 amount; // amount of token to mint/burn.
-        address depositAddress; // issuer's asset address in mint, merchant's asset address in burn.
+        address[] depositAddresses; // issuer's asset address in mint, merchant's asset address in burn.
         uint256 nonce; // serial number allocated for each request.
         uint256 timestamp; // time of the request creation.
         RequestStatus status; // status of the request.
@@ -114,7 +114,7 @@ interface IndexFactoryInterface {
             uint256 requestNonce,
             address requester,
             uint256 amount,
-            address depositAddress,
+            address[] memory depositAddresses,
             uint256 timestamp,
             string memory status,
             bytes32 requestHash
@@ -127,7 +127,7 @@ interface IndexFactoryInterface {
             uint256 requestNonce,
             address requester,
             uint256 amount,
-            address depositAddress,
+            address[] memory depositAddresses,
             uint256 timestamp,
             string memory status,
             bytes32 requestHash

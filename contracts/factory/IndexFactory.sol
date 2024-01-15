@@ -9,14 +9,30 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
+import "../chainlink/ChainlinkClient.sol";
 /// @title Index Token Factory
 /// @author NEX Labs Protocol
 /// @notice Allows User to initiate burn/mint requests and allows issuers to approve or deny them
 contract IndexFactory is
     IndexFactoryInterface,
+    ChainlinkClient,
     OwnableUpgradeable,
     PausableUpgradeable
 {
+    using Chainlink for Chainlink.Request;
+
+    string baseUrl;
+    string urlParams;
+
+    bytes32 public externalJobId;
+    uint256 public oraclePayment;
+    uint public lastUpdateTime;
+
+    uint public totalOracleList;
+
+    mapping(uint => address) public oracleCustodianList;
+    mapping(uint => uint) public oracleShareList;
+
     IndexToken public token;
 
     address public custodianWallet;
@@ -48,7 +64,10 @@ contract IndexFactory is
         address _token,
         address _usdc,
         uint8 _usdcDecimals,
-        address _nft
+        address _nft,
+        address _chainlinkToken,
+        address _oracleAddress,
+        bytes32 _externalJobId
     ) external initializer {
         custodianWallet = _custodianWallet;
         issuer = _issuer;
@@ -59,6 +78,13 @@ contract IndexFactory is
         __Ownable_init();
         __Pausable_init();
         feeRate = 10;
+        //set oracle data
+        setChainlinkToken(_chainlinkToken);
+        setChainlinkOracle(_oracleAddress);
+        externalJobId = _externalJobId;
+        oraclePayment = ((1 * LINK_DIVISIBILITY) / 10); // n * 10**18
+        baseUrl = "https://app.nexlabs.io/api/allFundingRates";
+        urlParams = "?multiplyFunc=18&timesNegFund=true&arrays=true";
     }
 
     modifier onlyIssuer() {
@@ -124,12 +150,82 @@ contract IndexFactory is
         return true;
     }
 
+
+    function concatenation(string memory a, string memory b) public pure returns (string memory) {
+        return string(bytes.concat(bytes(a), bytes(b)));
+    }
+
+    function setUrl(string memory _beforeAddress, string memory _afterAddress) public onlyOwner{
+    baseUrl = _beforeAddress;
+    urlParams = _afterAddress;
+    }
+    
+    function requestAssetsData(
+    )
+        public
+        returns(bytes32)
+    {
+        
+        string memory url = concatenation(baseUrl, urlParams);
+        Chainlink.Request memory req = buildChainlinkRequest(externalJobId, address(this), this.fulfillAssetsData.selector);
+        req.add("get", url);
+        req.add("path1", "results,addresses");
+        req.add("path2", "results,marketShares");
+        // req.add("path3", "results,swapVersions");
+        // sendOperatorRequest(req, oraclePayment);
+        return sendChainlinkRequestTo(chainlinkOracleAddress(), req, oraclePayment);
+    }
+
+  function fulfillAssetsData(bytes32 requestId, address[] memory _addresses, uint256[] memory _marketShares)
+    public
+    recordChainlinkFulfillment(requestId)
+  {
+    
+    address[] memory walletAddresses0 = _addresses;
+    uint[] memory oracleShareList0 = _marketShares;
+    // uint[] memory swapVersions0 = _swapVersions;
+
+    for(uint i =0; i < walletAddresses0.length; i++){
+        oracleCustodianList[i] = walletAddresses0[i];
+        oracleShareList[i] = _marketShares[i];
+        
+    }
+    totalOracleList = walletAddresses0.length;
+    lastUpdateTime = block.timestamp;
+    }
+
+
+    function mockFillAssetsList(address[] memory _addresses, uint256[] memory _marketShares)
+    public
+    onlyOwner
+  {
+    address[] memory walletAddresses0 = _addresses;
+    uint[] memory oracleShareList0 = _marketShares;
+    // uint[] memory swapVersions0 = _swapVersions;
+
+    for(uint i =0; i < walletAddresses0.length; i++){
+        oracleCustodianList[i] = walletAddresses0[i];
+        oracleShareList[i] = _marketShares[i];
+    }
+    totalOracleList = walletAddresses0.length;
+    lastUpdateTime = block.timestamp;
+    }
+
     function getAllMintRequests() public view returns (Request[] memory) {
         return mintRequests;
     }
 
     function getAllBurnRequests() public view returns (Request[] memory) {
         return burnRequests;
+    }
+
+    function getAllCustodianWallets() public view returns(address[] memory){
+        // address[] memory allCustodianWallets;
+        address[] memory allCustodianWallets = new address[](totalOracleList);
+        for(uint i = 0; i < totalOracleList; i++){
+            allCustodianWallets[i] = oracleCustodianList[i];
+        }
+        return allCustodianWallets;
     }
 
     /// @notice Allows a user to initiate a mint request
@@ -141,14 +237,16 @@ contract IndexFactory is
     ) external override whenNotPaused returns (uint256, bytes32) {
         uint feeAmount = (amount*feeRate)/10000;
         uint finalAmount = amount + feeAmount;
-
         //transfer usdc to custodian wallet
-        SafeERC20.safeTransferFrom(
-            IERC20(usdc),
-            msg.sender,
-            custodianWallet,
-            amount
-        );
+        for(uint i = 0; i < totalOracleList; i++){
+            SafeERC20.safeTransferFrom(
+                IERC20(usdc),
+                msg.sender,
+                oracleCustodianList[i],
+                amount*oracleShareList[i]/100e18
+            );
+        }
+
         //transfer fee to the owner
         SafeERC20.safeTransferFrom(
             IERC20(usdc),
@@ -163,7 +261,7 @@ contract IndexFactory is
         Request memory request = Request({
             requester: user,
             amount: amount,
-            depositAddress: custodianWallet,
+            depositAddresses: getAllCustodianWallets(),
             nonce: nonce,
             timestamp: timestamp,
             status: RequestStatus.PENDING
@@ -180,7 +278,7 @@ contract IndexFactory is
             nonce,
             user,
             amount,
-            custodianWallet,
+            getAllCustodianWallets(),
             timestamp,
             requestHash
         );
@@ -209,7 +307,7 @@ contract IndexFactory is
             request.nonce,
             request.requester,
             _tokenAmount,
-            request.depositAddress,
+            request.depositAddresses,
             request.timestamp,
             requestHash
         );
@@ -228,10 +326,12 @@ contract IndexFactory is
         uint256 nonce = burnRequests.length;
         uint256 timestamp = getTimestamp();
 
+        address[] memory userArr = new address[](1);
+        userArr[0] = user;
         Request memory request = Request({
             requester: user,
             amount: amount,
-            depositAddress: user,
+            depositAddresses: userArr,
             nonce: nonce,
             timestamp: timestamp,
             status: RequestStatus.PENDING
@@ -250,7 +350,7 @@ contract IndexFactory is
             nonce,
             user,
             amount,
-            custodianWallet,
+            getAllCustodianWallets(),
             timestamp,
             requestHash
         );
@@ -274,7 +374,7 @@ contract IndexFactory is
             request.nonce,
             request.requester,
             request.amount,
-            request.depositAddress,
+            request.depositAddresses,
             request.timestamp,
             requestHash
         );
@@ -311,7 +411,7 @@ contract IndexFactory is
             uint256 requestNonce,
             address requester,
             uint256 amount,
-            address depositAddress,
+            address[] memory depositAddresses,
             uint256 timestamp,
             string memory status,
             bytes32 requestHash
@@ -323,7 +423,7 @@ contract IndexFactory is
         requestNonce = request.nonce;
         requester = request.requester;
         amount = request.amount;
-        depositAddress = request.depositAddress;
+        depositAddresses = request.depositAddresses;
         timestamp = request.timestamp;
         status = statusString;
         requestHash = calcRequestHash(request);
@@ -342,7 +442,7 @@ contract IndexFactory is
             uint256 requestNonce,
             address requester,
             uint256 amount,
-            address depositAddress,
+            address[] memory depositAddresses,
             uint256 timestamp,
             string memory status,
             bytes32 requestHash
@@ -354,7 +454,7 @@ contract IndexFactory is
         requestNonce = request.nonce;
         requester = request.requester;
         amount = request.amount;
-        depositAddress = request.depositAddress;
+        depositAddresses = request.depositAddresses;
         timestamp = request.timestamp;
         status = statusString;
         requestHash = calcRequestHash(request);
@@ -414,7 +514,7 @@ contract IndexFactory is
                 abi.encode(
                     request.requester,
                     request.amount,
-                    request.depositAddress,
+                    request.depositAddresses,
                     request.nonce,
                     request.timestamp
                 )

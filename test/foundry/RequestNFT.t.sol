@@ -7,6 +7,8 @@ import "../../contracts/token/IndexToken.sol";
 import "../../contracts/token/RequestNFT.sol";
 import "../../contracts/factory/IndexFactory.sol";
 import "../../contracts/factory/IndexFactoryInterface.sol";
+import "../../contracts/test/MockApiOracle.sol";
+import "../../contracts/test/LinkToken.sol";
 
 contract CounterTest is Test {
 
@@ -107,13 +109,27 @@ contract CounterTest is Test {
     address newMerchant = vm.addr(7);
     address feeReceiver = vm.addr(8);
     address minter = vm.addr(9);
+    address cWallet1 = vm.addr(10);
+    address cWallet2 = vm.addr(11);
 
-    address add1 = vm.addr(10);
-    address add2 = vm.addr(11);
-    address add3 = vm.addr(12);
-    address add4 = vm.addr(13);
+    address add1 = vm.addr(12);
+    address add2 = vm.addr(13);
+    address add3 = vm.addr(14);
+    address add4 = vm.addr(15);
 
+    bytes32 jobId = "6b88e0402e5d415eb946e528b8e0c7ba";
 
+    MockApiOracle public oracle;
+    LinkToken link;
+
+    address[] public custodianWalletList = [
+        cWallet1,
+        cWallet2
+    ];
+    uint[] public marketShareList = [
+        70e18,
+        30e18
+    ];
     function setUp() public {
         usdc = new Token(
             1000000e6
@@ -139,6 +155,8 @@ contract CounterTest is Test {
              "ANFI NFT",
              address(0)
         );
+        link = new LinkToken();
+        oracle = new MockApiOracle(address(link));
         newIndexToken = new IndexToken();
         newIndexToken.initialize(
             "Anti Inflation",
@@ -154,7 +172,11 @@ contract CounterTest is Test {
             address(indexToken),
             address(usdc),
             6,
-            address(nft)
+            address(nft),
+            //oracle
+            address(link),
+            address(oracle),
+            jobId
         );
         newFactory = new IndexFactory();
         newFactory.initialize(
@@ -163,12 +185,24 @@ contract CounterTest is Test {
             address(indexToken),
             address(usdc),
             6,
-            address(nft)
+            address(nft),
+            //oracle
+            address(link),
+            address(oracle),
+            jobId
         );
         
 
         indexToken.setMinter(address(factory));
         nft.setMinter(address(factory));
+        //update custodian list
+        updateOracleList();
+    }
+
+    function updateOracleList() public {
+        link.transfer(address(factory), 1e17);
+        bytes32 requestId = factory.requestAssetsData();
+        oracle.fulfillOracleFundingRateRequest(requestId, custodianWalletList, marketShareList);
     }
 
     function testInitialized() public {
@@ -200,12 +234,13 @@ contract CounterTest is Test {
         assertEq(mintRequests.length, 1);
         assertEq(mintRequests[nonce].requester, add1);
         assertEq(mintRequests[nonce].amount, 1000e6);
-        assertEq(mintRequests[nonce].depositAddress, custodianWallet);
+        assertEq(mintRequests[nonce].depositAddresses, custodianWalletList);
         assertEq(mintRequests[nonce].nonce, 0);
         assertEq(mintRequests[nonce].timestamp, block.timestamp);
         assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
-        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
+        assertEq(usdc.balanceOf(cWallet1), 700e6);
+        assertEq(usdc.balanceOf(cWallet2), 300e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         vm.stopPrank();
         //conform mint request
@@ -237,12 +272,13 @@ contract CounterTest is Test {
         mintRequests = factory.getAllMintRequests();
         assertEq(mintRequests[nonce].requester, add1);
         assertEq(mintRequests[nonce].amount, 1000e6);
-        assertEq(mintRequests[nonce].depositAddress, custodianWallet);
+        assertEq(mintRequests[nonce].depositAddresses, custodianWalletList);
         assertEq(mintRequests[nonce].nonce, 0);
         assertEq(mintRequests[nonce].timestamp, block.timestamp);
         assertEq(mintRequests[nonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
         assertEq(mintRequests.length, 1);
-        assertEq(usdc.balanceOf(custodianWallet), 1000e6);
+        assertEq(usdc.balanceOf(cWallet1), 700e6);
+        assertEq(usdc.balanceOf(cWallet2), 300e6);
         assertEq(factory.mintRequestNonce(requestHash), nonce);
         vm.stopPrank();
         //conform mint request
@@ -262,7 +298,7 @@ contract CounterTest is Test {
         burnRequests = factory.getAllBurnRequests();
         assertEq(burnRequests[burnNonce].requester, add1);
         assertEq(burnRequests[burnNonce].amount, 10e18);
-        assertEq(burnRequests[burnNonce].depositAddress, add1);
+        assertEq(burnRequests[burnNonce].depositAddresses[0], add1);
         assertEq(burnRequests[burnNonce].nonce, burnNonce);
         assertEq(burnRequests[burnNonce].timestamp, block.timestamp);
         assertEq(burnRequests[burnNonce].status == IndexFactoryInterface.RequestStatus.PENDING, true);
@@ -275,7 +311,7 @@ contract CounterTest is Test {
         burnRequests = factory.getAllBurnRequests();
         assertEq(burnRequests[burnNonce].requester, add1);
         assertEq(burnRequests[burnNonce].amount, 10e18);
-        assertEq(burnRequests[burnNonce].depositAddress, add1);
+        assertEq(burnRequests[burnNonce].depositAddresses[0], add1);
         assertEq(burnRequests[burnNonce].nonce, burnNonce);
         assertEq(burnRequests[burnNonce].timestamp, block.timestamp);
         assertEq(burnRequests[burnNonce].status == IndexFactoryInterface.RequestStatus.APPROVED, true);
