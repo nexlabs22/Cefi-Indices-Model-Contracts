@@ -29,6 +29,16 @@
       "address": "0x12A1d813f70025366B31B27582af902141b50484",
       "txHash": "0xbbf7caa83fba319093cab27d55465413d1c595b2892fa5d859441144dc2d1406",
       "kind": "transparent"
+    },
+    {
+      "address": "0x9254f0ec55E4943b6e01fCF5dd2E52b7f26Df60e",
+      "txHash": "0x64fe868a46b03a95e392af41dee68e290447b928e5ab0b858c8d58aec538a611",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x8F54040F31bec288a5892aB90E6cD9725A06474a",
+      "txHash": "0x27123637f7c9b99bf9a8370814353c59ddc80bd87cf21641f7cf8f90670acaa6",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -1255,6 +1265,411 @@
               {
                 "label": "status",
                 "type": "t_enum(RequestStatus)6299",
+                "offset": 0,
+                "slot": "5"
+              }
+            ],
+            "numberOfBytes": "192"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "63fc103f6ad59bd7de38a546997c9f882888981854c798439c4b268538aade0b": {
+      "address": "0x2789AEff9FAD37f44ef333bdA8C7595137B2f5c7",
+      "txHash": "0x3d64a295dbdcdad0836c4c70bbcdca2392ca7f195607f80054ac91f935887576",
+      "layout": {
+        "solcVersion": "0.8.7",
+        "storage": [
+          {
+            "label": "s_ens",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_contract(ENSInterface)381",
+            "contract": "ChainlinkClient",
+            "src": "contracts\\chainlink\\ChainlinkClient.sol:29"
+          },
+          {
+            "label": "s_ensNode",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_bytes32",
+            "contract": "ChainlinkClient",
+            "src": "contracts\\chainlink\\ChainlinkClient.sol:30"
+          },
+          {
+            "label": "s_link",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_contract(LinkTokenInterface)476",
+            "contract": "ChainlinkClient",
+            "src": "contracts\\chainlink\\ChainlinkClient.sol:31"
+          },
+          {
+            "label": "s_oracle",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_contract(OperatorInterface)556",
+            "contract": "ChainlinkClient",
+            "src": "contracts\\chainlink\\ChainlinkClient.sol:32"
+          },
+          {
+            "label": "s_requestCount",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "ChainlinkClient",
+            "src": "contracts\\chainlink\\ChainlinkClient.sol:33"
+          },
+          {
+            "label": "s_pendingRequests",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_bytes32,t_address)",
+            "contract": "ChainlinkClient",
+            "src": "contracts\\chainlink\\ChainlinkClient.sol:34"
+          },
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "6",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "57",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "58",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "108",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "baseUrl",
+            "offset": 0,
+            "slot": "157",
+            "type": "t_string_storage",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:24"
+          },
+          {
+            "label": "urlParams",
+            "offset": 0,
+            "slot": "158",
+            "type": "t_string_storage",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:25"
+          },
+          {
+            "label": "externalJobId",
+            "offset": 0,
+            "slot": "159",
+            "type": "t_bytes32",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:27"
+          },
+          {
+            "label": "oraclePayment",
+            "offset": 0,
+            "slot": "160",
+            "type": "t_uint256",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:28"
+          },
+          {
+            "label": "lastUpdateTime",
+            "offset": 0,
+            "slot": "161",
+            "type": "t_uint256",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:29"
+          },
+          {
+            "label": "totalOracleList",
+            "offset": 0,
+            "slot": "162",
+            "type": "t_uint256",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:31"
+          },
+          {
+            "label": "oracleCustodianList",
+            "offset": 0,
+            "slot": "163",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:33"
+          },
+          {
+            "label": "oracleShareList",
+            "offset": 0,
+            "slot": "164",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:34"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "165",
+            "type": "t_contract(IndexToken)9649",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:36"
+          },
+          {
+            "label": "custodianWallet",
+            "offset": 0,
+            "slot": "166",
+            "type": "t_address",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:38"
+          },
+          {
+            "label": "issuer",
+            "offset": 0,
+            "slot": "167",
+            "type": "t_address",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:39"
+          },
+          {
+            "label": "usdc",
+            "offset": 0,
+            "slot": "168",
+            "type": "t_address",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:41"
+          },
+          {
+            "label": "usdcDecimals",
+            "offset": 20,
+            "slot": "168",
+            "type": "t_uint8",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:42"
+          },
+          {
+            "label": "feeRate",
+            "offset": 21,
+            "slot": "168",
+            "type": "t_uint8",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:44"
+          },
+          {
+            "label": "mintRequestNonce",
+            "offset": 0,
+            "slot": "169",
+            "type": "t_mapping(t_bytes32,t_uint256)",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:49"
+          },
+          {
+            "label": "burnRequestNonce",
+            "offset": 0,
+            "slot": "170",
+            "type": "t_mapping(t_bytes32,t_uint256)",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:52"
+          },
+          {
+            "label": "mintRequests",
+            "offset": 0,
+            "slot": "171",
+            "type": "t_array(t_struct(Request)8873_storage)dyn_storage",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:54"
+          },
+          {
+            "label": "burnRequests",
+            "offset": 0,
+            "slot": "172",
+            "type": "t_array(t_struct(Request)8873_storage)dyn_storage",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:55"
+          },
+          {
+            "label": "nft",
+            "offset": 0,
+            "slot": "173",
+            "type": "t_contract(RequestNFT)10088",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:57"
+          },
+          {
+            "label": "latestFeeUpdate",
+            "offset": 0,
+            "slot": "174",
+            "type": "t_uint256",
+            "contract": "IndexFactory",
+            "src": "contracts\\factory\\IndexFactory.sol:58"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_struct(Request)8873_storage)dyn_storage": {
+            "label": "struct IndexFactoryInterface.Request[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(ENSInterface)381": {
+            "label": "contract ENSInterface",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IndexToken)9649": {
+            "label": "contract IndexToken",
+            "numberOfBytes": "20"
+          },
+          "t_contract(LinkTokenInterface)476": {
+            "label": "contract LinkTokenInterface",
+            "numberOfBytes": "20"
+          },
+          "t_contract(OperatorInterface)556": {
+            "label": "contract OperatorInterface",
+            "numberOfBytes": "20"
+          },
+          "t_contract(RequestNFT)10088": {
+            "label": "contract RequestNFT",
+            "numberOfBytes": "20"
+          },
+          "t_enum(RequestStatus)8858": {
+            "label": "enum IndexFactoryInterface.RequestStatus",
+            "members": [
+              "NULL",
+              "PENDING",
+              "CANCELED",
+              "APPROVED",
+              "REJECTED"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_bytes32,t_address)": {
+            "label": "mapping(bytes32 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes32,t_uint256)": {
+            "label": "mapping(bytes32 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Request)8873_storage": {
+            "label": "struct IndexFactoryInterface.Request",
+            "members": [
+              {
+                "label": "requester",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "depositAddresses",
+                "type": "t_array(t_address)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "nonce",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "timestamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "status",
+                "type": "t_enum(RequestStatus)8858",
                 "offset": 0,
                 "slot": "5"
               }
