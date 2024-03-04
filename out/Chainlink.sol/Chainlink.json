@@ -2,12 +2,12 @@
   "abi": [],
   "bytecode": {
     "object": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c264ecf2d0492392044841a199a1ecc836a491c275971ea112a57720f90c463864736f6c63430008070033",
-    "sourceMap": "293:3494:31:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;293:3494:31;;;;;;;;;;;;;;;;;",
+    "sourceMap": "293:3494:30:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;293:3494:30;;;;;;;;;;;;;;;;;",
     "linkReferences": {}
   },
   "deployedBytecode": {
     "object": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c264ecf2d0492392044841a199a1ecc836a491c275971ea112a57720f90c463864736f6c63430008070033",
-    "sourceMap": "293:3494:31:-:0;;;;;;;;",
+    "sourceMap": "293:3494:30:-:0;;;;;;;;",
     "linkReferences": {}
   },
   "methodIdentifiers": {},
@@ -86,25 +86,25 @@
   },
   "ast": {
     "absolutePath": "node_modules/@chainlink/contracts/src/v0.8/Chainlink.sol",
-    "id": 54234,
+    "id": 56433,
     "exportedSymbols": {
       "BufferChainlink": [
-        56197
+        58374
       ],
       "CBORChainlink": [
-        56644
+        58821
       ],
       "Chainlink": [
-        54233
+        56432
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:3756:31",
+    "src": "32:3756:30",
     "nodes": [
       {
-        "id": 53966,
+        "id": 56165,
         "nodeType": "PragmaDirective",
-        "src": "32:23:31",
+        "src": "32:23:30",
         "nodes": [],
         "literals": [
           "solidity",
@@ -114,23 +114,23 @@
         ]
       },
       {
-        "id": 53968,
+        "id": 56167,
         "nodeType": "ImportDirective",
-        "src": "57:57:31",
+        "src": "57:57:30",
         "nodes": [],
         "absolutePath": "node_modules/@chainlink/contracts/src/v0.8/vendor/CBORChainlink.sol",
         "file": "./vendor/CBORChainlink.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 54234,
-        "sourceUnit": 56645,
+        "scope": 56433,
+        "sourceUnit": 58822,
         "symbolAliases": [
           {
             "foreign": {
-              "id": 53967,
+              "id": 56166,
               "name": "CBORChainlink",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "src": "65:13:31",
+              "src": "65:13:30",
               "typeDescriptions": {}
             },
             "nameLocation": "-1:-1:-1"
@@ -139,23 +139,23 @@
         "unitAlias": ""
       },
       {
-        "id": 53970,
+        "id": 56169,
         "nodeType": "ImportDirective",
-        "src": "115:61:31",
+        "src": "115:61:30",
         "nodes": [],
         "absolutePath": "node_modules/@chainlink/contracts/src/v0.8/vendor/BufferChainlink.sol",
         "file": "./vendor/BufferChainlink.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 54234,
-        "sourceUnit": 56198,
+        "scope": 56433,
+        "sourceUnit": 58375,
         "symbolAliases": [
           {
             "foreign": {
-              "id": 53969,
+              "id": 56168,
               "name": "BufferChainlink",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "src": "123:15:31",
+              "src": "123:15:30",
               "typeDescriptions": {}
             },
             "nameLocation": "-1:-1:-1"
@@ -164,20 +164,20 @@
         "unitAlias": ""
       },
       {
-        "id": 54233,
+        "id": 56432,
         "nodeType": "ContractDefinition",
-        "src": "293:3494:31",
+        "src": "293:3494:30",
         "nodes": [
           {
-            "id": 53974,
+            "id": 56173,
             "nodeType": "VariableDeclaration",
-            "src": "315:49:31",
+            "src": "315:49:30",
             "nodes": [],
             "constant": true,
             "mutability": "constant",
             "name": "defaultBufferSize",
-            "nameLocation": "341:17:31",
-            "scope": 54233,
+            "nameLocation": "341:17:30",
+            "scope": 56432,
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -185,10 +185,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 53972,
+              "id": 56171,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "315:7:31",
+              "src": "315:7:30",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -196,14 +196,14 @@
             },
             "value": {
               "hexValue": "323536",
-              "id": 53973,
+              "id": 56172,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "361:3:31",
+              "src": "361:3:30",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_256_by_1",
                 "typeString": "int_const 256"
@@ -213,51 +213,51 @@
             "visibility": "internal"
           },
           {
-            "id": 53978,
+            "id": 56177,
             "nodeType": "UsingForDirective",
-            "src": "414:47:31",
+            "src": "414:47:30",
             "nodes": [],
             "libraryName": {
-              "id": 53975,
+              "id": 56174,
               "name": "CBORChainlink",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 56644,
-              "src": "420:13:31"
+              "referencedDeclaration": 58821,
+              "src": "420:13:30"
             },
             "typeName": {
-              "id": 53977,
+              "id": 56176,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 53976,
+                "id": 56175,
                 "name": "BufferChainlink.buffer",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 55683,
-                "src": "438:22:31"
+                "referencedDeclaration": 57860,
+                "src": "438:22:30"
               },
-              "referencedDeclaration": 55683,
-              "src": "438:22:31",
+              "referencedDeclaration": 57860,
+              "src": "438:22:30",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_buffer_$55683_storage_ptr",
+                "typeIdentifier": "t_struct$_buffer_$57860_storage_ptr",
                 "typeString": "struct BufferChainlink.buffer"
               }
             }
           },
           {
-            "id": 53990,
+            "id": 56189,
             "nodeType": "StructDefinition",
-            "src": "465:147:31",
+            "src": "465:147:30",
             "nodes": [],
             "canonicalName": "Chainlink.Request",
             "members": [
               {
                 "constant": false,
-                "id": 53980,
+                "id": 56179,
                 "mutability": "mutable",
                 "name": "id",
-                "nameLocation": "494:2:31",
+                "nameLocation": "494:2:30",
                 "nodeType": "VariableDeclaration",
-                "scope": 53990,
-                "src": "486:10:31",
+                "scope": 56189,
+                "src": "486:10:30",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -265,10 +265,10 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 53979,
+                  "id": 56178,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
-                  "src": "486:7:31",
+                  "src": "486:7:30",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes32",
                     "typeString": "bytes32"
@@ -278,13 +278,13 @@
               },
               {
                 "constant": false,
-                "id": 53982,
+                "id": 56181,
                 "mutability": "mutable",
                 "name": "callbackAddress",
-                "nameLocation": "510:15:31",
+                "nameLocation": "510:15:30",
                 "nodeType": "VariableDeclaration",
-                "scope": 53990,
-                "src": "502:23:31",
+                "scope": 56189,
+                "src": "502:23:30",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -292,10 +292,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 53981,
+                  "id": 56180,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "502:7:31",
+                  "src": "502:7:30",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -306,13 +306,13 @@
               },
               {
                 "constant": false,
-                "id": 53984,
+                "id": 56183,
                 "mutability": "mutable",
                 "name": "callbackFunctionId",
-                "nameLocation": "538:18:31",
+                "nameLocation": "538:18:30",
                 "nodeType": "VariableDeclaration",
-                "scope": 53990,
-                "src": "531:25:31",
+                "scope": 56189,
+                "src": "531:25:30",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -320,10 +320,10 @@
                   "typeString": "bytes4"
                 },
                 "typeName": {
-                  "id": 53983,
+                  "id": 56182,
                   "name": "bytes4",
                   "nodeType": "ElementaryTypeName",
-                  "src": "531:6:31",
+                  "src": "531:6:30",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes4",
                     "typeString": "bytes4"
@@ -333,13 +333,13 @@
               },
               {
                 "constant": false,
-                "id": 53986,
+                "id": 56185,
                 "mutability": "mutable",
                 "name": "nonce",
-                "nameLocation": "570:5:31",
+                "nameLocation": "570:5:30",
                 "nodeType": "VariableDeclaration",
-                "scope": 53990,
-                "src": "562:13:31",
+                "scope": 56189,
+                "src": "562:13:30",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -347,10 +347,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 53985,
+                  "id": 56184,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "562:7:31",
+                  "src": "562:7:30",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -360,33 +360,33 @@
               },
               {
                 "constant": false,
-                "id": 53989,
+                "id": 56188,
                 "mutability": "mutable",
                 "name": "buf",
-                "nameLocation": "604:3:31",
+                "nameLocation": "604:3:30",
                 "nodeType": "VariableDeclaration",
-                "scope": 53990,
-                "src": "581:26:31",
+                "scope": 56189,
+                "src": "581:26:30",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_buffer_$55683_storage_ptr",
+                  "typeIdentifier": "t_struct$_buffer_$57860_storage_ptr",
                   "typeString": "struct BufferChainlink.buffer"
                 },
                 "typeName": {
-                  "id": 53988,
+                  "id": 56187,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 53987,
+                    "id": 56186,
                     "name": "BufferChainlink.buffer",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 55683,
-                    "src": "581:22:31"
+                    "referencedDeclaration": 57860,
+                    "src": "581:22:30"
                   },
-                  "referencedDeclaration": 55683,
-                  "src": "581:22:31",
+                  "referencedDeclaration": 57860,
+                  "src": "581:22:30",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_buffer_$55683_storage_ptr",
+                    "typeIdentifier": "t_struct$_buffer_$57860_storage_ptr",
                     "typeString": "struct BufferChainlink.buffer"
                   }
                 },
@@ -394,19 +394,19 @@
               }
             ],
             "name": "Request",
-            "nameLocation": "472:7:31",
-            "scope": 54233,
+            "nameLocation": "472:7:30",
+            "scope": 56432,
             "visibility": "public"
           },
           {
-            "id": 54035,
+            "id": 56234,
             "nodeType": "FunctionDefinition",
-            "src": "987:351:31",
+            "src": "987:351:30",
             "nodes": [],
             "body": {
-              "id": 54034,
+              "id": 56233,
               "nodeType": "Block",
-              "src": "1155:183:31",
+              "src": "1155:183:30",
               "nodes": [],
               "statements": [
                 {
@@ -414,38 +414,38 @@
                     "arguments": [
                       {
                         "expression": {
-                          "id": 54009,
+                          "id": 56208,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 53994,
-                          "src": "1182:4:31",
+                          "referencedDeclaration": 56193,
+                          "src": "1182:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54010,
+                        "id": 56209,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "1182:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "1182:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
                       {
-                        "id": 54011,
+                        "id": 56210,
                         "name": "defaultBufferSize",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 53974,
-                        "src": "1192:17:31",
+                        "referencedDeclaration": 56173,
+                        "src": "1192:17:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -455,7 +455,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         },
                         {
@@ -464,32 +464,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 54006,
+                        "id": 56205,
                         "name": "BufferChainlink",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 56197,
-                        "src": "1161:15:31",
+                        "referencedDeclaration": 58374,
+                        "src": "1161:15:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_BufferChainlink_$56197_$",
+                          "typeIdentifier": "t_type$_t_contract$_BufferChainlink_$58374_$",
                           "typeString": "type(library BufferChainlink)"
                         }
                       },
-                      "id": 54008,
+                      "id": 56207,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "init",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 55721,
-                      "src": "1161:20:31",
+                      "referencedDeclaration": 57898,
+                      "src": "1161:20:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_uint256_$returns$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_uint256_$returns$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,uint256) pure returns (struct BufferChainlink.buffer memory)"
                       }
                     },
-                    "id": 54012,
+                    "id": 56211,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -497,46 +497,46 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1161:49:31",
+                    "src": "1161:49:30",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                      "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                       "typeString": "struct BufferChainlink.buffer memory"
                     }
                   },
-                  "id": 54013,
+                  "id": 56212,
                   "nodeType": "ExpressionStatement",
-                  "src": "1161:49:31"
+                  "src": "1161:49:30"
                 },
                 {
                   "expression": {
-                    "id": 54018,
+                    "id": 56217,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 54014,
+                        "id": 56213,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 53994,
-                        "src": "1216:4:31",
+                        "referencedDeclaration": 56193,
+                        "src": "1216:4:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                          "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                           "typeString": "struct Chainlink.Request memory"
                         }
                       },
-                      "id": 54016,
+                      "id": 56215,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "id",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 53980,
-                      "src": "1216:7:31",
+                      "referencedDeclaration": 56179,
+                      "src": "1216:7:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
@@ -545,56 +545,56 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 54017,
+                      "id": 56216,
                       "name": "jobId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 53996,
-                      "src": "1226:5:31",
+                      "referencedDeclaration": 56195,
+                      "src": "1226:5:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "src": "1216:15:31",
+                    "src": "1216:15:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "id": 54019,
+                  "id": 56218,
                   "nodeType": "ExpressionStatement",
-                  "src": "1216:15:31"
+                  "src": "1216:15:30"
                 },
                 {
                   "expression": {
-                    "id": 54024,
+                    "id": 56223,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 54020,
+                        "id": 56219,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 53994,
-                        "src": "1237:4:31",
+                        "referencedDeclaration": 56193,
+                        "src": "1237:4:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                          "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                           "typeString": "struct Chainlink.Request memory"
                         }
                       },
-                      "id": 54022,
+                      "id": 56221,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "callbackAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 53982,
-                      "src": "1237:20:31",
+                      "referencedDeclaration": 56181,
+                      "src": "1237:20:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -603,56 +603,56 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 54023,
+                      "id": 56222,
                       "name": "callbackAddr",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 53998,
-                      "src": "1260:12:31",
+                      "referencedDeclaration": 56197,
+                      "src": "1260:12:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "src": "1237:35:31",
+                    "src": "1237:35:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "id": 54025,
+                  "id": 56224,
                   "nodeType": "ExpressionStatement",
-                  "src": "1237:35:31"
+                  "src": "1237:35:30"
                 },
                 {
                   "expression": {
-                    "id": 54030,
+                    "id": 56229,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 54026,
+                        "id": 56225,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 53994,
-                        "src": "1278:4:31",
+                        "referencedDeclaration": 56193,
+                        "src": "1278:4:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                          "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                           "typeString": "struct Chainlink.Request memory"
                         }
                       },
-                      "id": 54028,
+                      "id": 56227,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "callbackFunctionId",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 53984,
-                      "src": "1278:23:31",
+                      "referencedDeclaration": 56183,
+                      "src": "1278:23:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes4",
                         "typeString": "bytes4"
@@ -661,91 +661,91 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 54029,
+                      "id": 56228,
                       "name": "callbackFunc",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 54000,
-                      "src": "1304:12:31",
+                      "referencedDeclaration": 56199,
+                      "src": "1304:12:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes4",
                         "typeString": "bytes4"
                       }
                     },
-                    "src": "1278:38:31",
+                    "src": "1278:38:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
                     }
                   },
-                  "id": 54031,
+                  "id": 56230,
                   "nodeType": "ExpressionStatement",
-                  "src": "1278:38:31"
+                  "src": "1278:38:30"
                 },
                 {
                   "expression": {
-                    "id": 54032,
+                    "id": 56231,
                     "name": "self",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 53994,
-                    "src": "1329:4:31",
+                    "referencedDeclaration": 56193,
+                    "src": "1329:4:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                       "typeString": "struct Chainlink.Request memory"
                     }
                   },
-                  "functionReturnParameters": 54005,
-                  "id": 54033,
+                  "functionReturnParameters": 56204,
+                  "id": 56232,
                   "nodeType": "Return",
-                  "src": "1322:11:31"
+                  "src": "1322:11:30"
                 }
               ]
             },
             "documentation": {
-              "id": 53991,
+              "id": 56190,
               "nodeType": "StructuredDocumentation",
-              "src": "616:368:31",
+              "src": "616:368:30",
               "text": " @notice Initializes a Chainlink request\n @dev Sets the ID, callback address, and callback function signature on the request\n @param self The uninitialized request\n @param jobId The Job Specification ID\n @param callbackAddr The callback address\n @param callbackFunc The callback function signature\n @return The initialized request"
             },
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "initialize",
-            "nameLocation": "996:10:31",
+            "nameLocation": "996:10:30",
             "parameters": {
-              "id": 54001,
+              "id": 56200,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53994,
+                  "id": 56193,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "1027:4:31",
+                  "nameLocation": "1027:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54035,
-                  "src": "1012:19:31",
+                  "scope": 56234,
+                  "src": "1012:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 53993,
+                    "id": 56192,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53992,
+                      "id": 56191,
                       "name": "Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "1012:7:31"
+                      "referencedDeclaration": 56189,
+                      "src": "1012:7:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "1012:7:31",
+                    "referencedDeclaration": 56189,
+                    "src": "1012:7:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
@@ -753,13 +753,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 53996,
+                  "id": 56195,
                   "mutability": "mutable",
                   "name": "jobId",
-                  "nameLocation": "1045:5:31",
+                  "nameLocation": "1045:5:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54035,
-                  "src": "1037:13:31",
+                  "scope": 56234,
+                  "src": "1037:13:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -767,10 +767,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 53995,
+                    "id": 56194,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1037:7:31",
+                    "src": "1037:7:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -780,13 +780,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 53998,
+                  "id": 56197,
                   "mutability": "mutable",
                   "name": "callbackAddr",
-                  "nameLocation": "1064:12:31",
+                  "nameLocation": "1064:12:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54035,
-                  "src": "1056:20:31",
+                  "scope": 56234,
+                  "src": "1056:20:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -794,10 +794,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53997,
+                    "id": 56196,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1056:7:31",
+                    "src": "1056:7:30",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -808,13 +808,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54000,
+                  "id": 56199,
                   "mutability": "mutable",
                   "name": "callbackFunc",
-                  "nameLocation": "1089:12:31",
+                  "nameLocation": "1089:12:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54035,
-                  "src": "1082:19:31",
+                  "scope": 56234,
+                  "src": "1082:19:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -822,10 +822,10 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 53999,
+                    "id": 56198,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1082:6:31",
+                    "src": "1082:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -834,63 +834,63 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1006:99:31"
+              "src": "1006:99:30"
             },
             "returnParameters": {
-              "id": 54005,
+              "id": 56204,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 54004,
+                  "id": 56203,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54035,
-                  "src": "1129:24:31",
+                  "scope": 56234,
+                  "src": "1129:24:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 54003,
+                    "id": 56202,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 54002,
+                      "id": 56201,
                       "name": "Chainlink.Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "1129:17:31"
+                      "referencedDeclaration": 56189,
+                      "src": "1129:17:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "1129:17:31",
+                    "referencedDeclaration": 56189,
+                    "src": "1129:17:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1128:26:31"
+              "src": "1128:26:30"
             },
-            "scope": 54233,
+            "scope": 56432,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 54062,
+            "id": 56261,
             "nodeType": "FunctionDefinition",
-            "src": "1575:171:31",
+            "src": "1575:171:30",
             "nodes": [],
             "body": {
-              "id": 54061,
+              "id": 56260,
               "nodeType": "Block",
-              "src": "1648:98:31",
+              "src": "1648:98:30",
               "nodes": [],
               "statements": [
                 {
@@ -898,52 +898,52 @@
                     "arguments": [
                       {
                         "expression": {
-                          "id": 54047,
+                          "id": 56246,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54039,
-                          "src": "1675:4:31",
+                          "referencedDeclaration": 56238,
+                          "src": "1675:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54048,
+                        "id": 56247,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "1675:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "1675:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
                       {
                         "expression": {
-                          "id": 54049,
+                          "id": 56248,
                           "name": "data",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54041,
-                          "src": "1685:4:31",
+                          "referencedDeclaration": 56240,
+                          "src": "1685:4:30",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bytes_memory_ptr",
                             "typeString": "bytes memory"
                           }
                         },
-                        "id": 54050,
+                        "id": 56249,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "length",
                         "nodeType": "MemberAccess",
-                        "src": "1685:11:31",
+                        "src": "1685:11:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -953,7 +953,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         },
                         {
@@ -962,32 +962,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 54044,
+                        "id": 56243,
                         "name": "BufferChainlink",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 56197,
-                        "src": "1654:15:31",
+                        "referencedDeclaration": 58374,
+                        "src": "1654:15:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_BufferChainlink_$56197_$",
+                          "typeIdentifier": "t_type$_t_contract$_BufferChainlink_$58374_$",
                           "typeString": "type(library BufferChainlink)"
                         }
                       },
-                      "id": 54046,
+                      "id": 56245,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "init",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 55721,
-                      "src": "1654:20:31",
+                      "referencedDeclaration": 57898,
+                      "src": "1654:20:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_uint256_$returns$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_uint256_$returns$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,uint256) pure returns (struct BufferChainlink.buffer memory)"
                       }
                     },
-                    "id": 54051,
+                    "id": 56250,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -995,54 +995,54 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1654:43:31",
+                    "src": "1654:43:30",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                      "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                       "typeString": "struct BufferChainlink.buffer memory"
                     }
                   },
-                  "id": 54052,
+                  "id": 56251,
                   "nodeType": "ExpressionStatement",
-                  "src": "1654:43:31"
+                  "src": "1654:43:30"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
                         "expression": {
-                          "id": 54056,
+                          "id": 56255,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54039,
-                          "src": "1726:4:31",
+                          "referencedDeclaration": 56238,
+                          "src": "1726:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54057,
+                        "id": 56256,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "1726:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "1726:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
                       {
-                        "id": 54058,
+                        "id": 56257,
                         "name": "data",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54041,
-                        "src": "1736:4:31",
+                        "referencedDeclaration": 56240,
+                        "src": "1736:4:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes_memory_ptr",
                           "typeString": "bytes memory"
@@ -1052,7 +1052,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         },
                         {
@@ -1061,32 +1061,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 54053,
+                        "id": 56252,
                         "name": "BufferChainlink",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 56197,
-                        "src": "1703:15:31",
+                        "referencedDeclaration": 58374,
+                        "src": "1703:15:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_BufferChainlink_$56197_$",
+                          "typeIdentifier": "t_type$_t_contract$_BufferChainlink_$58374_$",
                           "typeString": "type(library BufferChainlink)"
                         }
                       },
-                      "id": 54055,
+                      "id": 56254,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "append",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 55940,
-                      "src": "1703:22:31",
+                      "referencedDeclaration": 58117,
+                      "src": "1703:22:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_bytes_memory_ptr_$returns$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_bytes_memory_ptr_$returns$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,bytes memory) pure returns (struct BufferChainlink.buffer memory)"
                       }
                     },
-                    "id": 54059,
+                    "id": 56258,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1094,63 +1094,63 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1703:38:31",
+                    "src": "1703:38:30",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                      "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                       "typeString": "struct BufferChainlink.buffer memory"
                     }
                   },
-                  "id": 54060,
+                  "id": 56259,
                   "nodeType": "ExpressionStatement",
-                  "src": "1703:38:31"
+                  "src": "1703:38:30"
                 }
               ]
             },
             "documentation": {
-              "id": 54036,
+              "id": 56235,
               "nodeType": "StructuredDocumentation",
-              "src": "1342:230:31",
+              "src": "1342:230:30",
               "text": " @notice Sets the data for the buffer without encoding CBOR on-chain\n @dev CBOR can be closed with curly-brackets {} or they can be left off\n @param self The initialized request\n @param data The CBOR data"
             },
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setBuffer",
-            "nameLocation": "1584:9:31",
+            "nameLocation": "1584:9:30",
             "parameters": {
-              "id": 54042,
+              "id": 56241,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 54039,
+                  "id": 56238,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "1609:4:31",
+                  "nameLocation": "1609:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54062,
-                  "src": "1594:19:31",
+                  "scope": 56261,
+                  "src": "1594:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 54038,
+                    "id": 56237,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 54037,
+                      "id": 56236,
                       "name": "Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "1594:7:31"
+                      "referencedDeclaration": 56189,
+                      "src": "1594:7:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "1594:7:31",
+                    "referencedDeclaration": 56189,
+                    "src": "1594:7:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
@@ -1158,13 +1158,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54041,
+                  "id": 56240,
                   "mutability": "mutable",
                   "name": "data",
-                  "nameLocation": "1628:4:31",
+                  "nameLocation": "1628:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54062,
-                  "src": "1615:17:31",
+                  "scope": 56261,
+                  "src": "1615:17:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1172,10 +1172,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 54040,
+                    "id": 56239,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1615:5:31",
+                    "src": "1615:5:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -1184,40 +1184,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1593:40:31"
+              "src": "1593:40:30"
             },
             "returnParameters": {
-              "id": 54043,
+              "id": 56242,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1648:0:31"
+              "src": "1648:0:30"
             },
-            "scope": 54233,
+            "scope": 56432,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 54090,
+            "id": 56289,
             "nodeType": "FunctionDefinition",
-            "src": "1951:175:31",
+            "src": "1951:175:30",
             "nodes": [],
             "body": {
-              "id": 54089,
+              "id": 56288,
               "nodeType": "Block",
-              "src": "2055:71:31",
+              "src": "2055:71:30",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54078,
+                        "id": 56277,
                         "name": "key",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54068,
-                        "src": "2083:3:31",
+                        "referencedDeclaration": 56267,
+                        "src": "2083:3:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -1233,46 +1233,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54073,
+                          "id": 56272,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54066,
-                          "src": "2061:4:31",
+                          "referencedDeclaration": 56265,
+                          "src": "2061:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54076,
+                        "id": 56275,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "2061:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "2061:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54077,
+                      "id": 56276,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeString",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56607,
-                      "src": "2061:21:31",
+                      "referencedDeclaration": 58784,
+                      "src": "2061:21:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,string memory) pure"
                       }
                     },
-                    "id": 54079,
+                    "id": 56278,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1280,27 +1280,27 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2061:26:31",
+                    "src": "2061:26:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54080,
+                  "id": 56279,
                   "nodeType": "ExpressionStatement",
-                  "src": "2061:26:31"
+                  "src": "2061:26:30"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54086,
+                        "id": 56285,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54070,
-                        "src": "2115:5:31",
+                        "referencedDeclaration": 56269,
+                        "src": "2115:5:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -1316,46 +1316,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54081,
+                          "id": 56280,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54066,
-                          "src": "2093:4:31",
+                          "referencedDeclaration": 56265,
+                          "src": "2093:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54084,
+                        "id": 56283,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "2093:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "2093:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54085,
+                      "id": 56284,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeString",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56607,
-                      "src": "2093:21:31",
+                      "referencedDeclaration": 58784,
+                      "src": "2093:21:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,string memory) pure"
                       }
                     },
-                    "id": 54087,
+                    "id": 56286,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1363,63 +1363,63 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2093:28:31",
+                    "src": "2093:28:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54088,
+                  "id": 56287,
                   "nodeType": "ExpressionStatement",
-                  "src": "2093:28:31"
+                  "src": "2093:28:30"
                 }
               ]
             },
             "documentation": {
-              "id": 54063,
+              "id": 56262,
               "nodeType": "StructuredDocumentation",
-              "src": "1750:198:31",
+              "src": "1750:198:30",
               "text": " @notice Adds a string value to the request with a given key name\n @param self The initialized request\n @param key The name of the key\n @param value The string value to add"
             },
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "add",
-            "nameLocation": "1960:3:31",
+            "nameLocation": "1960:3:30",
             "parameters": {
-              "id": 54071,
+              "id": 56270,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 54066,
+                  "id": 56265,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "1984:4:31",
+                  "nameLocation": "1984:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54090,
-                  "src": "1969:19:31",
+                  "scope": 56289,
+                  "src": "1969:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 54065,
+                    "id": 56264,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 54064,
+                      "id": 56263,
                       "name": "Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "1969:7:31"
+                      "referencedDeclaration": 56189,
+                      "src": "1969:7:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "1969:7:31",
+                    "referencedDeclaration": 56189,
+                    "src": "1969:7:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
@@ -1427,13 +1427,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54068,
+                  "id": 56267,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "2008:3:31",
+                  "nameLocation": "2008:3:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54090,
-                  "src": "1994:17:31",
+                  "scope": 56289,
+                  "src": "1994:17:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1441,10 +1441,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 54067,
+                    "id": 56266,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1994:6:31",
+                    "src": "1994:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1454,13 +1454,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54070,
+                  "id": 56269,
                   "mutability": "mutable",
                   "name": "value",
-                  "nameLocation": "2031:5:31",
+                  "nameLocation": "2031:5:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54090,
-                  "src": "2017:19:31",
+                  "scope": 56289,
+                  "src": "2017:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1468,10 +1468,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 54069,
+                    "id": 56268,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2017:6:31",
+                    "src": "2017:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1480,40 +1480,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1963:77:31"
+              "src": "1963:77:30"
             },
             "returnParameters": {
-              "id": 54072,
+              "id": 56271,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2055:0:31"
+              "src": "2055:0:30"
             },
-            "scope": 54233,
+            "scope": 56432,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 54118,
+            "id": 56317,
             "nodeType": "FunctionDefinition",
-            "src": "2329:178:31",
+            "src": "2329:178:30",
             "nodes": [],
             "body": {
-              "id": 54117,
+              "id": 56316,
               "nodeType": "Block",
-              "src": "2437:70:31",
+              "src": "2437:70:30",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54106,
+                        "id": 56305,
                         "name": "key",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54096,
-                        "src": "2465:3:31",
+                        "referencedDeclaration": 56295,
+                        "src": "2465:3:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -1529,46 +1529,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54101,
+                          "id": 56300,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54094,
-                          "src": "2443:4:31",
+                          "referencedDeclaration": 56293,
+                          "src": "2443:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54104,
+                        "id": 56303,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "2443:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "2443:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54105,
+                      "id": 56304,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeString",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56607,
-                      "src": "2443:21:31",
+                      "referencedDeclaration": 58784,
+                      "src": "2443:21:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,string memory) pure"
                       }
                     },
-                    "id": 54107,
+                    "id": 56306,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1576,27 +1576,27 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2443:26:31",
+                    "src": "2443:26:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54108,
+                  "id": 56307,
                   "nodeType": "ExpressionStatement",
-                  "src": "2443:26:31"
+                  "src": "2443:26:30"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54114,
+                        "id": 56313,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54098,
-                        "src": "2496:5:31",
+                        "referencedDeclaration": 56297,
+                        "src": "2496:5:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes_memory_ptr",
                           "typeString": "bytes memory"
@@ -1612,46 +1612,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54109,
+                          "id": 56308,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54094,
-                          "src": "2475:4:31",
+                          "referencedDeclaration": 56293,
+                          "src": "2475:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54112,
+                        "id": 56311,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "2475:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "2475:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54113,
+                      "id": 56312,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeBytes",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56508,
-                      "src": "2475:20:31",
+                      "referencedDeclaration": 58685,
+                      "src": "2475:20:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_bytes_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_bytes_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,bytes memory) pure"
                       }
                     },
-                    "id": 54115,
+                    "id": 56314,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1659,63 +1659,63 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2475:27:31",
+                    "src": "2475:27:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54116,
+                  "id": 56315,
                   "nodeType": "ExpressionStatement",
-                  "src": "2475:27:31"
+                  "src": "2475:27:30"
                 }
               ]
             },
             "documentation": {
-              "id": 54091,
+              "id": 56290,
               "nodeType": "StructuredDocumentation",
-              "src": "2130:196:31",
+              "src": "2130:196:30",
               "text": " @notice Adds a bytes value to the request with a given key name\n @param self The initialized request\n @param key The name of the key\n @param value The bytes value to add"
             },
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addBytes",
-            "nameLocation": "2338:8:31",
+            "nameLocation": "2338:8:30",
             "parameters": {
-              "id": 54099,
+              "id": 56298,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 54094,
+                  "id": 56293,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "2367:4:31",
+                  "nameLocation": "2367:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54118,
-                  "src": "2352:19:31",
+                  "scope": 56317,
+                  "src": "2352:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 54093,
+                    "id": 56292,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 54092,
+                      "id": 56291,
                       "name": "Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "2352:7:31"
+                      "referencedDeclaration": 56189,
+                      "src": "2352:7:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "2352:7:31",
+                    "referencedDeclaration": 56189,
+                    "src": "2352:7:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
@@ -1723,13 +1723,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54096,
+                  "id": 56295,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "2391:3:31",
+                  "nameLocation": "2391:3:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54118,
-                  "src": "2377:17:31",
+                  "scope": 56317,
+                  "src": "2377:17:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1737,10 +1737,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 54095,
+                    "id": 56294,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2377:6:31",
+                    "src": "2377:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1750,13 +1750,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54098,
+                  "id": 56297,
                   "mutability": "mutable",
                   "name": "value",
-                  "nameLocation": "2413:5:31",
+                  "nameLocation": "2413:5:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54118,
-                  "src": "2400:18:31",
+                  "scope": 56317,
+                  "src": "2400:18:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1764,10 +1764,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 54097,
+                    "id": 56296,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2400:5:31",
+                    "src": "2400:5:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -1776,40 +1776,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2346:76:31"
+              "src": "2346:76:30"
             },
             "returnParameters": {
-              "id": 54100,
+              "id": 56299,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2437:0:31"
+              "src": "2437:0:30"
             },
-            "scope": 54233,
+            "scope": 56432,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 54146,
+            "id": 56345,
             "nodeType": "FunctionDefinition",
-            "src": "2712:168:31",
+            "src": "2712:168:30",
             "nodes": [],
             "body": {
-              "id": 54145,
+              "id": 56344,
               "nodeType": "Block",
-              "src": "2812:68:31",
+              "src": "2812:68:30",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54134,
+                        "id": 56333,
                         "name": "key",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54124,
-                        "src": "2840:3:31",
+                        "referencedDeclaration": 56323,
+                        "src": "2840:3:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -1825,46 +1825,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54129,
+                          "id": 56328,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54122,
-                          "src": "2818:4:31",
+                          "referencedDeclaration": 56321,
+                          "src": "2818:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54132,
+                        "id": 56331,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "2818:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "2818:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54133,
+                      "id": 56332,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeString",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56607,
-                      "src": "2818:21:31",
+                      "referencedDeclaration": 58784,
+                      "src": "2818:21:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,string memory) pure"
                       }
                     },
-                    "id": 54135,
+                    "id": 56334,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1872,27 +1872,27 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2818:26:31",
+                    "src": "2818:26:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54136,
+                  "id": 56335,
                   "nodeType": "ExpressionStatement",
-                  "src": "2818:26:31"
+                  "src": "2818:26:30"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54142,
+                        "id": 56341,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54126,
-                        "src": "2869:5:31",
+                        "referencedDeclaration": 56325,
+                        "src": "2869:5:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_int256",
                           "typeString": "int256"
@@ -1908,46 +1908,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54137,
+                          "id": 56336,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54122,
-                          "src": "2850:4:31",
+                          "referencedDeclaration": 56321,
+                          "src": "2850:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54140,
+                        "id": 56339,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "2850:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "2850:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54141,
+                      "id": 56340,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeInt",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56483,
-                      "src": "2850:18:31",
+                      "referencedDeclaration": 58660,
+                      "src": "2850:18:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_int256_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_int256_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,int256) pure"
                       }
                     },
-                    "id": 54143,
+                    "id": 56342,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1955,63 +1955,63 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2850:25:31",
+                    "src": "2850:25:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54144,
+                  "id": 56343,
                   "nodeType": "ExpressionStatement",
-                  "src": "2850:25:31"
+                  "src": "2850:25:30"
                 }
               ]
             },
             "documentation": {
-              "id": 54119,
+              "id": 56318,
               "nodeType": "StructuredDocumentation",
-              "src": "2511:198:31",
+              "src": "2511:198:30",
               "text": " @notice Adds a int256 value to the request with a given key name\n @param self The initialized request\n @param key The name of the key\n @param value The int256 value to add"
             },
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addInt",
-            "nameLocation": "2721:6:31",
+            "nameLocation": "2721:6:30",
             "parameters": {
-              "id": 54127,
+              "id": 56326,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 54122,
+                  "id": 56321,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "2748:4:31",
+                  "nameLocation": "2748:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54146,
-                  "src": "2733:19:31",
+                  "scope": 56345,
+                  "src": "2733:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 54121,
+                    "id": 56320,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 54120,
+                      "id": 56319,
                       "name": "Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "2733:7:31"
+                      "referencedDeclaration": 56189,
+                      "src": "2733:7:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "2733:7:31",
+                    "referencedDeclaration": 56189,
+                    "src": "2733:7:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
@@ -2019,13 +2019,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54124,
+                  "id": 56323,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "2772:3:31",
+                  "nameLocation": "2772:3:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54146,
-                  "src": "2758:17:31",
+                  "scope": 56345,
+                  "src": "2758:17:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2033,10 +2033,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 54123,
+                    "id": 56322,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2758:6:31",
+                    "src": "2758:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2046,13 +2046,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54126,
+                  "id": 56325,
                   "mutability": "mutable",
                   "name": "value",
-                  "nameLocation": "2788:5:31",
+                  "nameLocation": "2788:5:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54146,
-                  "src": "2781:12:31",
+                  "scope": 56345,
+                  "src": "2781:12:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2060,10 +2060,10 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 54125,
+                    "id": 56324,
                     "name": "int256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2781:6:31",
+                    "src": "2781:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_int256",
                       "typeString": "int256"
@@ -2072,40 +2072,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2727:70:31"
+              "src": "2727:70:30"
             },
             "returnParameters": {
-              "id": 54128,
+              "id": 56327,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2812:0:31"
+              "src": "2812:0:30"
             },
-            "scope": 54233,
+            "scope": 56432,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 54174,
+            "id": 56373,
             "nodeType": "FunctionDefinition",
-            "src": "3087:171:31",
+            "src": "3087:171:30",
             "nodes": [],
             "body": {
-              "id": 54173,
+              "id": 56372,
               "nodeType": "Block",
-              "src": "3189:69:31",
+              "src": "3189:69:30",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54162,
+                        "id": 56361,
                         "name": "key",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54152,
-                        "src": "3217:3:31",
+                        "referencedDeclaration": 56351,
+                        "src": "3217:3:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -2121,46 +2121,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54157,
+                          "id": 56356,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54150,
-                          "src": "3195:4:31",
+                          "referencedDeclaration": 56349,
+                          "src": "3195:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54160,
+                        "id": 56359,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "3195:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "3195:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54161,
+                      "id": 56360,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeString",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56607,
-                      "src": "3195:21:31",
+                      "referencedDeclaration": 58784,
+                      "src": "3195:21:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,string memory) pure"
                       }
                     },
-                    "id": 54163,
+                    "id": 56362,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2168,27 +2168,27 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3195:26:31",
+                    "src": "3195:26:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54164,
+                  "id": 56363,
                   "nodeType": "ExpressionStatement",
-                  "src": "3195:26:31"
+                  "src": "3195:26:30"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54170,
+                        "id": 56369,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54154,
-                        "src": "3247:5:31",
+                        "referencedDeclaration": 56353,
+                        "src": "3247:5:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2204,46 +2204,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54165,
+                          "id": 56364,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54150,
-                          "src": "3227:4:31",
+                          "referencedDeclaration": 56349,
+                          "src": "3227:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54168,
+                        "id": 56367,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "3227:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "3227:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54169,
+                      "id": 56368,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeUInt",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56417,
-                      "src": "3227:19:31",
+                      "referencedDeclaration": 58594,
+                      "src": "3227:19:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_uint256_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_uint256_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,uint256) pure"
                       }
                     },
-                    "id": 54171,
+                    "id": 56370,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2251,63 +2251,63 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3227:26:31",
+                    "src": "3227:26:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54172,
+                  "id": 56371,
                   "nodeType": "ExpressionStatement",
-                  "src": "3227:26:31"
+                  "src": "3227:26:30"
                 }
               ]
             },
             "documentation": {
-              "id": 54147,
+              "id": 56346,
               "nodeType": "StructuredDocumentation",
-              "src": "2884:200:31",
+              "src": "2884:200:30",
               "text": " @notice Adds a uint256 value to the request with a given key name\n @param self The initialized request\n @param key The name of the key\n @param value The uint256 value to add"
             },
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addUint",
-            "nameLocation": "3096:7:31",
+            "nameLocation": "3096:7:30",
             "parameters": {
-              "id": 54155,
+              "id": 56354,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 54150,
+                  "id": 56349,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "3124:4:31",
+                  "nameLocation": "3124:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54174,
-                  "src": "3109:19:31",
+                  "scope": 56373,
+                  "src": "3109:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 54149,
+                    "id": 56348,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 54148,
+                      "id": 56347,
                       "name": "Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "3109:7:31"
+                      "referencedDeclaration": 56189,
+                      "src": "3109:7:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "3109:7:31",
+                    "referencedDeclaration": 56189,
+                    "src": "3109:7:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
@@ -2315,13 +2315,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54152,
+                  "id": 56351,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "3148:3:31",
+                  "nameLocation": "3148:3:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54174,
-                  "src": "3134:17:31",
+                  "scope": 56373,
+                  "src": "3134:17:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2329,10 +2329,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 54151,
+                    "id": 56350,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3134:6:31",
+                    "src": "3134:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2342,13 +2342,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54154,
+                  "id": 56353,
                   "mutability": "mutable",
                   "name": "value",
-                  "nameLocation": "3165:5:31",
+                  "nameLocation": "3165:5:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54174,
-                  "src": "3157:13:31",
+                  "scope": 56373,
+                  "src": "3157:13:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2356,10 +2356,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 54153,
+                    "id": 56352,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3157:7:31",
+                    "src": "3157:7:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2368,40 +2368,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3103:71:31"
+              "src": "3103:71:30"
             },
             "returnParameters": {
-              "id": 54156,
+              "id": 56355,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3189:0:31"
+              "src": "3189:0:30"
             },
-            "scope": 54233,
+            "scope": 56432,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 54232,
+            "id": 56431,
             "nodeType": "FunctionDefinition",
-            "src": "3479:306:31",
+            "src": "3479:306:30",
             "nodes": [],
             "body": {
-              "id": 54231,
+              "id": 56430,
               "nodeType": "Block",
-              "src": "3597:188:31",
+              "src": "3597:188:30",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 54191,
+                        "id": 56390,
                         "name": "key",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54180,
-                        "src": "3625:3:31",
+                        "referencedDeclaration": 56379,
+                        "src": "3625:3:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -2417,46 +2417,46 @@
                       ],
                       "expression": {
                         "expression": {
-                          "id": 54186,
+                          "id": 56385,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54178,
-                          "src": "3603:4:31",
+                          "referencedDeclaration": 56377,
+                          "src": "3603:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54189,
+                        "id": 56388,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "3603:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "3603:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54190,
+                      "id": 56389,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "encodeString",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56607,
-                      "src": "3603:21:31",
+                      "referencedDeclaration": 58784,
+                      "src": "3603:21:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory,string memory) pure"
                       }
                     },
-                    "id": 54192,
+                    "id": 56391,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2464,16 +2464,16 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3603:26:31",
+                    "src": "3603:26:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54193,
+                  "id": 56392,
                   "nodeType": "ExpressionStatement",
-                  "src": "3603:26:31"
+                  "src": "3603:26:30"
                 },
                 {
                   "expression": {
@@ -2482,46 +2482,46 @@
                       "argumentTypes": [],
                       "expression": {
                         "expression": {
-                          "id": 54194,
+                          "id": 56393,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54178,
-                          "src": "3635:4:31",
+                          "referencedDeclaration": 56377,
+                          "src": "3635:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54197,
+                        "id": 56396,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "3635:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "3635:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54198,
+                      "id": 56397,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "startArray",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56619,
-                      "src": "3635:19:31",
+                      "referencedDeclaration": 58796,
+                      "src": "3635:19:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory) pure"
                       }
                     },
-                    "id": 54199,
+                    "id": 56398,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2529,47 +2529,47 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3635:21:31",
+                    "src": "3635:21:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54200,
+                  "id": 56399,
                   "nodeType": "ExpressionStatement",
-                  "src": "3635:21:31"
+                  "src": "3635:21:30"
                 },
                 {
                   "body": {
-                    "id": 54222,
+                    "id": 56421,
                     "nodeType": "Block",
-                    "src": "3706:47:31",
+                    "src": "3706:47:30",
                     "statements": [
                       {
                         "expression": {
                           "arguments": [
                             {
                               "baseExpression": {
-                                "id": 54217,
+                                "id": 56416,
                                 "name": "values",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 54183,
-                                "src": "3736:6:31",
+                                "referencedDeclaration": 56382,
+                                "src": "3736:6:30",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
                                   "typeString": "string memory[] memory"
                                 }
                               },
-                              "id": 54219,
+                              "id": 56418,
                               "indexExpression": {
-                                "id": 54218,
+                                "id": 56417,
                                 "name": "i",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 54202,
-                                "src": "3743:1:31",
+                                "referencedDeclaration": 56401,
+                                "src": "3743:1:30",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -2580,7 +2580,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "3736:9:31",
+                              "src": "3736:9:30",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_string_memory_ptr",
                                 "typeString": "string memory"
@@ -2596,46 +2596,46 @@
                             ],
                             "expression": {
                               "expression": {
-                                "id": 54212,
+                                "id": 56411,
                                 "name": "self",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 54178,
-                                "src": "3714:4:31",
+                                "referencedDeclaration": 56377,
+                                "src": "3714:4:30",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                                  "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                                   "typeString": "struct Chainlink.Request memory"
                                 }
                               },
-                              "id": 54215,
+                              "id": 56414,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "buf",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 53989,
-                              "src": "3714:8:31",
+                              "referencedDeclaration": 56188,
+                              "src": "3714:8:30",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                                "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                                 "typeString": "struct BufferChainlink.buffer memory"
                               }
                             },
-                            "id": 54216,
+                            "id": 56415,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "encodeString",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 56607,
-                            "src": "3714:21:31",
+                            "referencedDeclaration": 58784,
+                            "src": "3714:21:30",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                              "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$_t_string_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                               "typeString": "function (struct BufferChainlink.buffer memory,string memory) pure"
                             }
                           },
-                          "id": 54220,
+                          "id": 56419,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2643,16 +2643,16 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "3714:32:31",
+                          "src": "3714:32:30",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_tuple$__$",
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 54221,
+                        "id": 56420,
                         "nodeType": "ExpressionStatement",
-                        "src": "3714:32:31"
+                        "src": "3714:32:30"
                       }
                     ]
                   },
@@ -2661,18 +2661,18 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 54208,
+                    "id": 56407,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 54205,
+                      "id": 56404,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 54202,
-                      "src": "3682:1:31",
+                      "referencedDeclaration": 56401,
+                      "src": "3682:1:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2682,51 +2682,51 @@
                     "operator": "<",
                     "rightExpression": {
                       "expression": {
-                        "id": 54206,
+                        "id": 56405,
                         "name": "values",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54183,
-                        "src": "3686:6:31",
+                        "referencedDeclaration": 56382,
+                        "src": "3686:6:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
                           "typeString": "string memory[] memory"
                         }
                       },
-                      "id": 54207,
+                      "id": 56406,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "src": "3686:13:31",
+                      "src": "3686:13:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "3682:17:31",
+                    "src": "3682:17:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 54223,
+                  "id": 56422,
                   "initializationExpression": {
                     "assignments": [
-                      54202
+                      56401
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 54202,
+                        "id": 56401,
                         "mutability": "mutable",
                         "name": "i",
-                        "nameLocation": "3675:1:31",
+                        "nameLocation": "3675:1:30",
                         "nodeType": "VariableDeclaration",
-                        "scope": 54223,
-                        "src": "3667:9:31",
+                        "scope": 56422,
+                        "src": "3667:9:30",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -2734,10 +2734,10 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 54201,
+                          "id": 56400,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
-                          "src": "3667:7:31",
+                          "src": "3667:7:30",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -2746,17 +2746,17 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 54204,
+                    "id": 56403,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 54203,
+                      "id": 56402,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "3679:1:31",
+                      "src": "3679:1:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
                         "typeString": "int_const 0"
@@ -2764,11 +2764,11 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "3667:13:31"
+                    "src": "3667:13:30"
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 54210,
+                      "id": 56409,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2776,14 +2776,14 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "3701:3:31",
+                      "src": "3701:3:30",
                       "subExpression": {
-                        "id": 54209,
+                        "id": 56408,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 54202,
-                        "src": "3701:1:31",
+                        "referencedDeclaration": 56401,
+                        "src": "3701:1:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2794,12 +2794,12 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 54211,
+                    "id": 56410,
                     "nodeType": "ExpressionStatement",
-                    "src": "3701:3:31"
+                    "src": "3701:3:30"
                   },
                   "nodeType": "ForStatement",
-                  "src": "3662:91:31"
+                  "src": "3662:91:30"
                 },
                 {
                   "expression": {
@@ -2808,46 +2808,46 @@
                       "argumentTypes": [],
                       "expression": {
                         "expression": {
-                          "id": 54224,
+                          "id": 56423,
                           "name": "self",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 54178,
-                          "src": "3758:4:31",
+                          "referencedDeclaration": 56377,
+                          "src": "3758:4:30",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                            "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                             "typeString": "struct Chainlink.Request memory"
                           }
                         },
-                        "id": 54227,
+                        "id": 56426,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "buf",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 53989,
-                        "src": "3758:8:31",
+                        "referencedDeclaration": 56188,
+                        "src": "3758:8:30",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_buffer_$55683_memory_ptr",
+                          "typeIdentifier": "t_struct$_buffer_$57860_memory_ptr",
                           "typeString": "struct BufferChainlink.buffer memory"
                         }
                       },
-                      "id": 54228,
+                      "id": 56427,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "endSequence",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 56643,
-                      "src": "3758:20:31",
+                      "referencedDeclaration": 58820,
+                      "src": "3758:20:30",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$55683_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$55683_memory_ptr_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_buffer_$57860_memory_ptr_$returns$__$bound_to$_t_struct$_buffer_$57860_memory_ptr_$",
                         "typeString": "function (struct BufferChainlink.buffer memory) pure"
                       }
                     },
-                    "id": 54229,
+                    "id": 56428,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2855,63 +2855,63 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3758:22:31",
+                    "src": "3758:22:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 54230,
+                  "id": 56429,
                   "nodeType": "ExpressionStatement",
-                  "src": "3758:22:31"
+                  "src": "3758:22:30"
                 }
               ]
             },
             "documentation": {
-              "id": 54175,
+              "id": 56374,
               "nodeType": "StructuredDocumentation",
-              "src": "3262:214:31",
+              "src": "3262:214:30",
               "text": " @notice Adds an array of strings to the request with a given key name\n @param self The initialized request\n @param key The name of the key\n @param values The array of string values to add"
             },
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addStringArray",
-            "nameLocation": "3488:14:31",
+            "nameLocation": "3488:14:30",
             "parameters": {
-              "id": 54184,
+              "id": 56383,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 54178,
+                  "id": 56377,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "3523:4:31",
+                  "nameLocation": "3523:4:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54232,
-                  "src": "3508:19:31",
+                  "scope": 56431,
+                  "src": "3508:19:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Request_$53990_memory_ptr",
+                    "typeIdentifier": "t_struct$_Request_$56189_memory_ptr",
                     "typeString": "struct Chainlink.Request"
                   },
                   "typeName": {
-                    "id": 54177,
+                    "id": 56376,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 54176,
+                      "id": 56375,
                       "name": "Request",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53990,
-                      "src": "3508:7:31"
+                      "referencedDeclaration": 56189,
+                      "src": "3508:7:30"
                     },
-                    "referencedDeclaration": 53990,
-                    "src": "3508:7:31",
+                    "referencedDeclaration": 56189,
+                    "src": "3508:7:30",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Request_$53990_storage_ptr",
+                      "typeIdentifier": "t_struct$_Request_$56189_storage_ptr",
                       "typeString": "struct Chainlink.Request"
                     }
                   },
@@ -2919,13 +2919,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54180,
+                  "id": 56379,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "3547:3:31",
+                  "nameLocation": "3547:3:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54232,
-                  "src": "3533:17:31",
+                  "scope": 56431,
+                  "src": "3533:17:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2933,10 +2933,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 54179,
+                    "id": 56378,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3533:6:31",
+                    "src": "3533:6:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2946,13 +2946,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 54183,
+                  "id": 56382,
                   "mutability": "mutable",
                   "name": "values",
-                  "nameLocation": "3572:6:31",
+                  "nameLocation": "3572:6:30",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54232,
-                  "src": "3556:22:31",
+                  "scope": 56431,
+                  "src": "3556:22:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2961,18 +2961,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 54181,
+                      "id": 56380,
                       "name": "string",
                       "nodeType": "ElementaryTypeName",
-                      "src": "3556:6:31",
+                      "src": "3556:6:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage_ptr",
                         "typeString": "string"
                       }
                     },
-                    "id": 54182,
+                    "id": 56381,
                     "nodeType": "ArrayTypeName",
-                    "src": "3556:8:31",
+                    "src": "3556:8:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
                       "typeString": "string[]"
@@ -2981,15 +2981,15 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3502:80:31"
+              "src": "3502:80:30"
             },
             "returnParameters": {
-              "id": 54185,
+              "id": 56384,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3597:0:31"
+              "src": "3597:0:30"
             },
-            "scope": 54233,
+            "scope": 56432,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
@@ -3000,22 +3000,22 @@
         "contractDependencies": [],
         "contractKind": "library",
         "documentation": {
-          "id": 53971,
+          "id": 56170,
           "nodeType": "StructuredDocumentation",
-          "src": "178:114:31",
+          "src": "178:114:30",
           "text": " @title Library for common Chainlink functions\n @dev Uses imported CBOR library for encoding to buffer"
         },
         "fullyImplemented": true,
         "linearizedBaseContracts": [
-          54233
+          56432
         ],
         "name": "Chainlink",
-        "nameLocation": "301:9:31",
-        "scope": 54234,
+        "nameLocation": "301:9:30",
+        "scope": 56433,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 31
+  "id": 30
 }

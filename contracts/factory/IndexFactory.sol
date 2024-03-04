@@ -159,20 +159,22 @@ contract IndexFactory is
     baseUrl = _beforeAddress;
     urlParams = _afterAddress;
     }
+
+    function setOracleInfo(address _oracleAddress, bytes32 _externalJobId) public onlyOwner {
+        setChainlinkOracle(_oracleAddress);
+        externalJobId = _externalJobId;
+    }
     
     function requestAssetsData(
     )
         public
         returns(bytes32)
     {
-        
         string memory url = concatenation(baseUrl, urlParams);
         Chainlink.Request memory req = buildChainlinkRequest(externalJobId, address(this), this.fulfillAssetsData.selector);
         req.add("get", url);
         req.add("path1", "results,addresses");
         req.add("path2", "results,marketShares");
-        // req.add("path3", "results,swapVersions");
-        // sendOperatorRequest(req, oraclePayment);
         return sendChainlinkRequestTo(chainlinkOracleAddress(), req, oraclePayment);
     }
 
@@ -180,18 +182,23 @@ contract IndexFactory is
     public
     recordChainlinkFulfillment(requestId)
   {
-    
-    address[] memory walletAddresses0 = _addresses;
-    uint[] memory oracleShareList0 = _marketShares;
-    // uint[] memory swapVersions0 = _swapVersions;
+    _initData(_addresses, _marketShares);
+  }
 
-    for(uint i =0; i < walletAddresses0.length; i++){
-        oracleCustodianList[i] = walletAddresses0[i];
-        oracleShareList[i] = _marketShares[i];
-        
-    }
-    totalOracleList = walletAddresses0.length;
-    lastUpdateTime = block.timestamp;
+
+    function _initData(address[] memory _addresses, uint256[] memory _marketShares) private {
+        address[] memory walletAddresses0 = _addresses;
+        uint[] memory oracleShareList0 = _marketShares;
+
+        for(uint i =0; i < walletAddresses0.length; i++){
+            oracleCustodianList[i] = walletAddresses0[i];
+            oracleShareList[i] = _marketShares[i];   
+        }
+
+        totalOracleList = walletAddresses0.length;
+        lastUpdateTime = block.timestamp;
+
+        emit ExchangeWalletsSet(_addresses, _marketShares);
     }
 
 
@@ -199,17 +206,8 @@ contract IndexFactory is
     public
     onlyOwner
   {
-    address[] memory walletAddresses0 = _addresses;
-    uint[] memory oracleShareList0 = _marketShares;
-    // uint[] memory swapVersions0 = _swapVersions;
-
-    for(uint i =0; i < walletAddresses0.length; i++){
-        oracleCustodianList[i] = walletAddresses0[i];
-        oracleShareList[i] = _marketShares[i];
-    }
-    totalOracleList = walletAddresses0.length;
-    lastUpdateTime = block.timestamp;
-    }
+    _initData(_addresses, _marketShares);
+  }
 
     function getAllMintRequests() public view returns (Request[] memory) {
         return mintRequests;

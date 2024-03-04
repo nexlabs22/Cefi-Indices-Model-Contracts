@@ -104,8 +104,8 @@
       }
     },
     "contracts/factory/IndexFactory.sol": {
-      "lastModificationDate": 1705356779020,
-      "contentHash": "c68e8624d0aae2bd28529f88c9019495",
+      "lastModificationDate": 1709561924286,
+      "contentHash": "fa9bd556baf8f6f9687259d4075200bd",
       "sourceName": "contracts/factory/IndexFactory.sol",
       "solcConfig": {
         "settings": {
@@ -190,8 +190,8 @@
       }
     },
     "contracts/factory/IndexFactoryInterface.sol": {
-      "lastModificationDate": 1705355184851,
-      "contentHash": "581fb451c039c3165270c43adb847e94",
+      "lastModificationDate": 1709561771922,
+      "contentHash": "c4751c5906cb67cda09bfe5e14d9f6c8",
       "sourceName": "contracts/factory/IndexFactoryInterface.sol",
       "solcConfig": {
         "settings": {
@@ -1954,7 +1954,7 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "Ownable": {
-          "0.8.17+commit.8df45f5f.Windows.msvc": "Ownable.sol\\Ownable.0.8.17.json"
+          "0.8.7+commit.e28d00a7.Windows.msvc": "Ownable.sol\\Ownable.json"
         }
       }
     },
@@ -2168,7 +2168,7 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "IERC20": {
-          "0.8.17+commit.8df45f5f.Windows.msvc": "IERC20.sol\\IERC20.0.8.17.json"
+          "0.8.7+commit.e28d00a7.Windows.msvc": "IERC20.sol\\IERC20.json"
         }
       }
     },
@@ -2565,7 +2565,7 @@
       "versionRequirement": "^0.8.1",
       "artifacts": {
         "Address": {
-          "0.8.17+commit.8df45f5f.Windows.msvc": "Address.sol\\Address.0.8.17.json"
+          "0.8.7+commit.e28d00a7.Windows.msvc": "Address.sol\\Address.json"
         }
       }
     },
@@ -2605,7 +2605,7 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "Context": {
-          "0.8.17+commit.8df45f5f.Windows.msvc": "Context.sol\\Context.0.8.17.json"
+          "0.8.7+commit.e28d00a7.Windows.msvc": "Context.sol\\Context.json"
         }
       }
     },
@@ -3306,7 +3306,7 @@
       }
     },
     "test/foundry/RequestNFT.t.sol": {
-      "lastModificationDate": 1705356937065,
+      "lastModificationDate": 1705356957902,
       "contentHash": "26b4874b712dee03c2ce2f4f5aa85fc7",
       "sourceName": "test/foundry/RequestNFT.t.sol",
       "solcConfig": {
@@ -3526,6 +3526,188 @@
       "artifacts": {
         "CounterTest": {
           "0.8.7+commit.e28d00a7.Windows.msvc": "factory.t.sol\\CounterTest.json"
+        }
+      }
+    },
+    "test/fuzzing/FuzzFactory.t.sol": {
+      "lastModificationDate": 1705507043529,
+      "contentHash": "cd491bb75d1f525277620bb2eed68be7",
+      "sourceName": "test/fuzzing/FuzzFactory.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "contracts\\chainlink\\ChainlinkClient.sol",
+        "contracts\\factory\\IndexFactory.sol",
+        "contracts\\factory\\IndexFactoryInterface.sol",
+        "contracts\\proposable\\ProposableOwnableUpgradeable.sol",
+        "contracts\\test\\LinkToken.sol",
+        "contracts\\test\\MockApiOracle.sol",
+        "contracts\\test\\Token.sol",
+        "contracts\\test\\libs\\LinkTokenReceiver.sol",
+        "contracts\\test\\libs\\SafeMathChainlink.sol",
+        "contracts\\token\\IndexToken.sol",
+        "contracts\\token\\RequestNFT.sol",
+        "contracts\\token\\TokenInterface.sol",
+        "lib/forge-std/lib/ds-test/src\\test.sol",
+        "lib/forge-std/src/Base.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdChains.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdInvariant.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdStyle.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src\\Test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/forge-std/src/interfaces/IMulticall3.sol",
+        "lib/forge-std/src/safeconsole.sol",
+        "node_modules/@chainlink\\contracts/src/v0.8/Chainlink.sol",
+        "node_modules/@chainlink\\contracts/src/v0.8/interfaces/ChainlinkRequestInterface.sol",
+        "node_modules/@chainlink\\contracts/src/v0.8/interfaces/ENSInterface.sol",
+        "node_modules/@chainlink\\contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
+        "node_modules/@chainlink\\contracts/src/v0.8/interfaces/OperatorInterface.sol",
+        "node_modules/@chainlink/contracts/src/v0.8/interfaces/OracleInterface.sol",
+        "node_modules/@chainlink\\contracts/src/v0.8/interfaces/PointerInterface.sol",
+        "node_modules/@chainlink/contracts/src/v0.8/vendor/BufferChainlink.sol",
+        "node_modules/@chainlink/contracts/src/v0.8/vendor/CBORChainlink.sol",
+        "node_modules/@chainlink\\contracts/src/v0.8/vendor/ENSResolver.sol",
+        "node_modules/@openzeppelin\\contracts/access/Ownable.sol",
+        "node_modules/@openzeppelin/contracts/interfaces/IERC165.sol",
+        "node_modules/@openzeppelin/contracts/interfaces/IERC4906.sol",
+        "node_modules/@openzeppelin/contracts/interfaces/IERC721.sol",
+        "node_modules/@openzeppelin\\contracts/token/ERC20/ERC20.sol",
+        "node_modules/@openzeppelin\\contracts/token/ERC20/IERC20.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+        "node_modules/@openzeppelin\\contracts/token/ERC20/utils/SafeERC20.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+        "node_modules/@openzeppelin\\contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+        "node_modules/@openzeppelin/contracts/utils/Address.sol",
+        "node_modules/@openzeppelin/contracts/utils/Context.sol",
+        "node_modules/@openzeppelin/contracts/utils/Strings.sol",
+        "node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol",
+        "node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol",
+        "node_modules/@openzeppelin/contracts/utils/math/Math.sol",
+        "node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol",
+        "node_modules/@openzeppelin\\contracts-upgradeable/access/OwnableUpgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "node_modules/@openzeppelin\\contracts-upgradeable/security/PausableUpgradeable.sol",
+        "node_modules/@openzeppelin\\contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
+        "node_modules/@thirdweb-dev\\contracts/eip/interface/IERC721Supply.sol",
+        "node_modules/base64-sol\\base64.sol"
+      ],
+      "versionRequirement": "^0.8.7",
+      "artifacts": {
+        "CounterTest": {
+          "0.8.7+commit.e28d00a7.Windows.msvc": "FuzzFactory.t.sol\\CounterTest.json"
+        }
+      }
+    },
+    "test/fuzzing/Fuzz_IndexToken.t.sol": {
+      "lastModificationDate": 1705523720937,
+      "contentHash": "a7b9e2f5185e031cac61785351d502b1",
+      "sourceName": "test/fuzzing/Fuzz_IndexToken.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "contracts\\proposable\\ProposableOwnableUpgradeable.sol",
+        "contracts\\token\\IndexToken.sol",
+        "contracts\\token\\TokenInterface.sol",
+        "lib/forge-std/lib/ds-test/src\\test.sol",
+        "lib/forge-std/src/Base.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdChains.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdInvariant.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdStyle.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src\\Test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/forge-std/src/interfaces/IMulticall3.sol",
+        "lib/forge-std/src/safeconsole.sol",
+        "node_modules/@openzeppelin\\contracts-upgradeable/access/OwnableUpgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "node_modules/@openzeppelin\\contracts-upgradeable/security/PausableUpgradeable.sol",
+        "node_modules/@openzeppelin\\contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+        "node_modules/@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol"
+      ],
+      "versionRequirement": "^0.8.7",
+      "artifacts": {
+        "CounterTest": {
+          "0.8.7+commit.e28d00a7.Windows.msvc": "Fuzz_IndexToken.t.sol\\CounterTest.json"
         }
       }
     }

@@ -11,7 +11,7 @@ async function deployIndexToken() {
   const indexToken = await upgrades.deployProxy(IndexToken, [
       "CRYPTO5 Index token",
       "CR5",
-      '1000000000000000000', // 1e18
+      '10000000000000000', // 1e16 = 0.01%
       deployer.address,
       '1000000000000000000000000' // 1000000e18
   ], { initializer: 'initialize' });

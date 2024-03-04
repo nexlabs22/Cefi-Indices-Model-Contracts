@@ -5,8 +5,8 @@ async function main() {
   const [deployer] = await ethers.getSigners();
 
   const requestNFT = await ethers.deployContract("RequestNFT", [
-    "ANFI Request NFT",
-    "ANFI NFT",
+    "CRYPTO5 Request NFT",
+    "CR5 NFT",
     deployer.address
   ]);
 
