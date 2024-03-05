@@ -1,4 +1,4 @@
-import { goerliAnfiIndexToken, goerliCrypto5IndexToken, goerliUsdtAddress, goerliAnfiNFT, goerliLinkAddress, goerliOracleAdress, goerliExternalJobIdBytes32 } from '../network';
+import { goerliAnfiIndexToken, goerliCrypto5IndexToken, goerliUsdtAddress, goerliAnfiNFT, goerliLinkAddress, goerliOracleAdress, goerliExternalJobIdBytes32, polygonCrypto5IndexToken, polygonUsdtAddress, polygonCR5NFT, polygonLinkAddress } from '../network';
 
 // import { ethers, upgrades } from "hardhat";
 const { ethers, upgrades, network, hre } = require('hardhat');
@@ -13,11 +13,11 @@ async function deployFactory() {
   const indexFactory = await upgrades.deployProxy(IndexFactory, [
       deployer.address, //custodian wallet
       deployer.address, //issuer wallet
-      goerliCrypto5IndexToken as string,
-      goerliUsdtAddress as string,
+      polygonCrypto5IndexToken as string,
+      polygonUsdtAddress as string,
       '18',
-      goerliAnfiNFT,
-      goerliLinkAddress, //link token address
+      polygonCR5NFT,
+      polygonLinkAddress, //link token address
       goerliOracleAdress, //oracle address
       goerliExternalJobIdBytes32 // jobId
   ], { initializer: 'initialize' });

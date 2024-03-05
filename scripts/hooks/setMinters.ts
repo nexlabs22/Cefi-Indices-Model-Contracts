@@ -13,6 +13,7 @@ import {
     bytecode as NFT_BYTECODE,
   } from '../../artifacts/contracts/token/RequestNFT.sol/RequestNFT.json'
 import { IndexFactory } from "../../typechain-types";
+import { polygonCR5NFT, polygonCrypto5Factory, polygonCrypto5IndexToken } from "../../network";
 // import { goerliAnfiFactoryAddress } from "../contractAddresses";
 require("dotenv").config()
 
@@ -23,7 +24,7 @@ async function main() {
     // const provider = new ethers.JsonRpcProvider(process.env.GOERLI_RPC_URL)
     const provider = new ethers.JsonRpcProvider(process.env.POLYGON_RPC_URL)
     const tokenCotract:any = new ethers.Contract(
-        polygonCR5IndexToken as string, //factory goerli
+        polygonCrypto5IndexToken as string, //factory goerli
         IndexToken_ABI,
         provider
     )
@@ -35,11 +36,16 @@ async function main() {
     // await wallet.connect(provider);
     // console.log("sending data...")
 
-    console.log("setting minter...")
-    const result1 = await cotract.connect(deployer).setMinter(
-        sepoliaCR5IndexFactory
+    console.log("setting tokenCotract minter...")
+    const result1 = await tokenCotract.connect(deployer).setMinter(
+        polygonCrypto5Factory
     )
     const receipt1 = await result1.wait();
+    console.log("setting nftCotract minter...")
+    const result2 = await nftCotract.connect(deployer).setMinter(
+        polygonCrypto5Factory
+    )
+    const receipt2 = await result1.wait();
     console.log('Ended')
     
 }

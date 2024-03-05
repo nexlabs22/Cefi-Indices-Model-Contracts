@@ -4,6 +4,7 @@ pragma solidity 0.8.7;
 import "../proposable/ProposableOwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./TokenInterface.sol";
 
 /// @title Index Token
@@ -11,6 +12,7 @@ import "./TokenInterface.sol";
 /// @notice The main token contract for Index Token (NEX Labs Protocol)
 /// @dev This contract uses an upgradeable pattern
 contract IndexToken is
+    Initializable,
     ContextUpgradeable,
     ERC20Upgradeable,
     ProposableOwnableUpgradeable,
